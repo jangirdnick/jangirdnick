@@ -1,8 +1,0 @@
-feat(home): implement interactive home page sections and scroll animations
-
-- add home page layout with lenis smooth scrolling integration
-- create hero section with multi-axis parallax watermark and text reveal
-- implement scroll-driven paragraph text animation component system
-- add interactive projects section with parallax image cards
-- build sticky footer component with polygon clip-path reveal
-- configure custom fonts next image remote patterns and tailwind utilities
