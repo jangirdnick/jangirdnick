@@ -1,6 +1,6 @@
-import { MotionValue, UseScrollOptions } from "motion/react";
+import { MotionValue, UseScrollOptions } from 'motion/react';
 
-export type OffsetTuple = NonNullable<UseScrollOptions["offset"]>;
+export type OffsetTuple = NonNullable<UseScrollOptions['offset']>;
 
 export interface ParagraphProps {
   text: string;

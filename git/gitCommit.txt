@@ -1,8 +1,12 @@
-feat(home): implement interactive home page sections and scroll animations
+feat(home): update homepage hero and content sections
 
-- add home page layout with lenis smooth scrolling integration
-- create hero section with multi-axis parallax watermark and text reveal
-- implement scroll-driven paragraph text animation component system
-- add interactive projects section with parallax image cards
-- build sticky footer component with polygon clip-path reveal
-- configure custom fonts next image remote patterns and tailwind utilities
+- add global client layout, dynamic tab title, and mobile menu visibility
+- refresh hero section layout, copy, and visuals
+- improve supporting sections for better clarity and flow
+- polish overall homepage structure and responsiveness
+- wrap root layout in HomeLayoutClient to enable menu and Lenis scroll on all routes
+- make floating menu trigger visible at y=0 on mobile devices
+- add dynamic document title change to Jangir d nick when tab is hidden
+- fix showMarkers render condition in Paragraph component
+- configure full SEO metadata in root layout
+

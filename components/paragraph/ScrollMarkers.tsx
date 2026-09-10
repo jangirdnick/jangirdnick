@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { memo } from "react";
-import { motion } from "motion/react";
-import { ScrollMarkersProps } from "./types";
-import { parseViewportPercent } from "./utils";
+import { memo } from 'react';
+import { motion } from 'motion/react';
+import { ScrollMarkersProps } from './types';
+import { parseViewportPercent } from './utils';
 
 /**
  * Visual debug markers indicating scroll animation trigger boundaries and live progress.
@@ -11,10 +11,10 @@ import { parseViewportPercent } from "./utils";
  */
 export const ScrollMarkers = memo(function ScrollMarkers({
   progressText,
-  offset = ["start 0.9", "start 0.25"],
+  offset = ['start 0.9', 'start 0.25'],
 }: ScrollMarkersProps) {
-  const startStr = (offset[0] as string) || "start 0.9";
-  const endStr = (offset[1] as string) || "start 0.25";
+  const startStr = (offset[0] as string) || 'start 0.9';
+  const endStr = (offset[1] as string) || 'start 0.25';
 
   const startPercent = parseViewportPercent(startStr, 90);
   const endPercent = parseViewportPercent(endStr, 25);
@@ -30,10 +30,8 @@ export const ScrollMarkers = memo(function ScrollMarkers({
           START MARKER ({startStr} → {startPercent.toFixed(0)}%)
         </span>
         <span className="flex items-center gap-1">
-          Scroll Progress:{" "}
-          <motion.span className="font-bold text-white">
-            {progressText}
-          </motion.span>
+          Scroll Progress:{' '}
+          <motion.span className="font-bold text-white">{progressText}</motion.span>
         </span>
       </div>
 
@@ -51,10 +49,7 @@ export const ScrollMarkers = memo(function ScrollMarkers({
       <div className="absolute -top-7 right-0 text-xs font-mono text-yellow-400 bg-yellow-950/80 border border-yellow-600/50 px-2 py-0.5 rounded pointer-events-none flex items-center gap-2">
         <span>[Paragraph Element]</span>
         <span>
-          Progress:{" "}
-          <motion.span className="text-white font-bold">
-            {progressText}
-          </motion.span>
+          Progress: <motion.span className="text-white font-bold">{progressText}</motion.span>
         </span>
       </div>
     </>
