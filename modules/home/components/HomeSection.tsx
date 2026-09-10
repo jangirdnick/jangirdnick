@@ -75,7 +75,7 @@ export default function HomeSection() {
         style={{ y: heroTextY, opacity: heroTextOpacity }}
         className="absolute top-4/5 md:top-2/5 left-6 sm:left-12 md:left-1/6 -translate-y-4/5 md:-translate-y-2/5 md:-translate-x-1/6  text-white text-3xl md:text-2xl lg:text-xl xl:text-3xl tracking-[-0.04em]! font-helveticaMediumItalic pr-6 md:pr-0 max-md:tracking-[-0.06em]!"
       >
-        <h1 className="">Web design & -development </h1>
+        <h1 className="">Web design &amp; -development</h1>
         <h1 className="">Cloud DevOps engineer</h1>
         {/* <h1 className="max-md:text-xl">voor growing businesses that production ready</h1> */}
         <h1 className="text-background/60 font-helveticaMedium font-thin! text-shadow-xs text-shadow-black/15 max-md:font-thin max-md:text-xl max-md:scale-[1.15] max-md:pl-6">

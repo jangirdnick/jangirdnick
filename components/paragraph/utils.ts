@@ -27,7 +27,7 @@ export function parseViewportPercent(offsetStr: string | undefined, fallback: nu
   }
   const num = parseFloat(valStr);
   if (!isNaN(num)) {
-    return num <= 1 ? num * 600 : num;
+    return num <= 1 ? num * 100 : num;
   }
   return fallback;
 }

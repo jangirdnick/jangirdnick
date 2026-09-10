@@ -11,7 +11,7 @@
     "format:check": "prettier --check .",
     "type-check": "tsc --noEmit",
     "test": "pnpm run type-check && pnpm run lint",
-    "validate": "pnpm format && pnpm format:check",
+    "validate": "pnpm format:check",
     "audit": "pnpm audit --audit-level high",
     "prepare": "husky"
   },
