@@ -1,0 +1,59 @@
+name: Test
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**/*.md'
+      - '.gitignore'
+      - '.prettierignore'
+
+  pull_request:
+    branches: [main]
+    paths-ignore:
+      - '**/*.md'
+      - '.gitignore'
+      - '.prettierignore'
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  NODE_VERSION: '24'
+
+jobs:
+  ci:
+    name: Lint, validate, build & audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Test (lint & types)
+        run: pnpm test
+
+      - name: Validate (Prettier)
+        run: pnpm validate
+
+      - name: Build
+        run: pnpm build
+
+      - name: Security audit
+        run: pnpm audit --audit-level high

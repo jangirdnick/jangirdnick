@@ -1,10 +1,9 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @config "../tailwind.config.ts";
 
 @theme {
   --font-sans:
-    "helveticaNeueMedium", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, sans-serif;
+    'helveticaNeueMedium', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   /* --font-helvetica-medium: 'helveticaNeueMedium', sans-serif;
   --font-helvetica-medium-italic: 'helveticaNeueMediumItalic', sans-serif;
   --font-helvetica-roman: 'HelveticaNeueRoman', sans-serif;
@@ -15,53 +14,60 @@
 }
 
 :root {
-  --background: #FFF;
+  --background: #fff;
   --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #FFF;
+    --background: #fff;
     --foreground: #000000;
   }
 }
 
 @font-face {
-  font-family: "helveticaNeueMedium";
-  src: url("/fonts/helvetica-neue-5/HelveticaNeueMedium.otf") format("opentype");
+  font-family: 'helveticaNeueMedium';
+  src: url('/fonts/helvetica-neue-5/HelveticaNeueMedium.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "helveticaNeueMediumItalic";
-  src: url("/fonts/helvetica-neue-5/HelveticaNeueMediumItalic.otf")
-    format("opentype");
+  font-family: 'helveticaNeueMediumItalic';
+  src: url('/fonts/helvetica-neue-5/HelveticaNeueMediumItalic.otf') format('opentype');
   font-weight: 500;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "HelveticaNeueRoman";
-  src: url("/fonts/helvetica-neue-5/HelveticaNeueRoman.otf") format("opentype");
+  font-family: 'HelveticaNeueRoman';
+  src: url('/fonts/helvetica-neue-5/HelveticaNeueRoman.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "PoppinsSemiBoldItalic";
-  src: url("/fonts/Poppins/Poppins-SemiBoldItalic.ttf") format("truetype");
+  font-family: 'PoppinsSemiBoldItalic';
+  src: url('/fonts/Poppins/Poppins-SemiBoldItalic.ttf') format('truetype');
   font-weight: 500;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "PoppinsMedium";
-  src: url("/fonts/Poppins/Poppins-Medium.ttf") format("truetype");
+  font-family: 'PoppinsMedium';
+  src: url('/fonts/Poppins/Poppins-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PoppinsRegular';
+  src: url('/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -83,4 +89,3 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
-
