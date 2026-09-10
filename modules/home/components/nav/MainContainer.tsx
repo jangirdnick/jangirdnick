@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react';
 import { useNav } from './NavContext';
-import NavDesktop from '@/modules/home/components/Nav/NavDesktop';
+import NavDesktop from '@/modules/home/components/nav/NavDesktop';
 
 interface MainContainerProps {
   children: React.ReactNode;

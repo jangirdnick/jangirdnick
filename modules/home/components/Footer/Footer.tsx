@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import Button from '../../../../components/Button';
 import Image from 'next/image';
-import FooterSocial from '../Nav/Menu/FooterSocial';
+import FooterSocial from '../nav/Menu/FooterSocial';
 
 export default function Footer() {
   const containerRef = useRef<HTMLDivElement>(null);

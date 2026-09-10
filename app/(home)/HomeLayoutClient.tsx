@@ -2,9 +2,9 @@
 
 import { useEffect } from 'react';
 import Lenis from 'lenis';
-import { NavProvider } from '@/modules/home/components/Nav/NavContext';
-import MainContainer from '@/modules/home/components/Nav/MainContainer';
-import MenuNav from '@/modules/home/components/Nav/Menu/MenuNav';
+import { NavProvider } from '@/modules/home/components/nav/NavContext';
+import MainContainer from '@/modules/home/components/nav/MainContainer';
+import MenuNav from '@/modules/home/components/nav/Menu/MenuNav';
 
 interface HomeLayoutClientProps {
   children: React.ReactNode;
