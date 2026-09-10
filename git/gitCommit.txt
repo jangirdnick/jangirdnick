@@ -1,7 +1,0 @@
-feat(nav): add global client layout, dynamic tab title, and mobile menu visibility
-
-- wrap root layout in HomeLayoutClient to enable menu and Lenis scroll on all routes
-- make floating menu trigger visible at y=0 on mobile devices
-- add dynamic document title change to Jangir d nick when tab is hidden
-- fix showMarkers render condition and parseViewportPercent calculation in Paragraph component
-- configure full SEO metadata in root layout
