@@ -10,7 +10,7 @@ export default function AboutSection() {
           alt="About Image"
           width={1000}
           height={1000}
-          className="w-full h-full object-cover pt-10 scale-[1.1] lg:scale-[1.5]"
+          className="w-full h-full object-cover pt-10 scale-[1.15] lg:scale-[1.5]"
           priority
         />
       </div>

@@ -50,7 +50,7 @@ export default function MenuNav() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed top-3 md:top-6 right-6 md:right-8 z-999999"
+            className="fixed top-2.5 md:top-6 right-4 md:right-8 z-999999"
           >
             <button
               onClick={toggleMenu}

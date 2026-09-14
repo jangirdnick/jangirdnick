@@ -159,7 +159,7 @@ export default function ExperienceCard({
             <motion.p
               // animate={{ y: hovered ? 0 : '65%' }}
               // transition={{ duration: 0.42, ease: [0.76, 0, 0.24, 1] }}
-              className={` relative text-xs xl:text-sm font-helveticaRoman text-white/65 leading-none ${hovered ? 'bottom-0' : '-bottom-1.5'} ease-in-out duration-500`}
+              className={` relative text-xs xl:text-sm font-helveticaRoman text-white/65 leading-none ${hovered ? 'lg:bottom-0' : 'lg:-bottom-1'} ease-in-out duration-500`}
             >
               {item.subtitle}
             </motion.p>

@@ -24,7 +24,7 @@ export default function Footer() {
       className="relative max-md:h-[150vw] md:h-130 max-xl:h-100 2xl:h-150 w-full"
       style={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' }}
     >
-      <div className="fixed bottom-0 left-0 right-0 w-full bg-foreground text-background overflow-hidden -z-10 px-6 md:px-12">
+      <div className="fixed bottom-0 left-0 right-0 w-full bg-foreground text-background overflow-hidden -z-10 px-4 md:px-12">
         <motion.div style={{ y, opacity, scale }} className="w-full h-full flex flex-col ">
           <div className="flex items-end justify-between pb-10 pt-24">
             <div className="flex items-center gap-4">

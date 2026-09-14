@@ -5,12 +5,12 @@ import Link from 'next/link';
 
 export default function AboutInfo() {
   return (
-    <section className="w-full p-6 space-y-12 md:p-12 md:pb-20  md:space-y-24">
-      <div className="space-y-12">
+    <section className="w-full p-4 space-y-12 md:p-12 md:pb-20  md:space-y-24">
+      <div className="space-y-12 p-2">
         <Paragraph
           text={`Hi, I'm Nandlal Jangid – also called Nick. As a DevOps & Cloud Engineer, I design and build websites
           that stand out and perform top.`}
-          className="max-md:text-[6.8vw]!"
+          className="max-md:text-[7vw]! tracking-[-0.04em]!"
         />
 
         <Link href={'/contact'}>

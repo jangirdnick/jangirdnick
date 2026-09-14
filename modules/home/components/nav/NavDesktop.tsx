@@ -16,7 +16,7 @@ export default function NavDesktop() {
 
   return (
     <header
-      className={`absolute inset-x-0 w-full p-4.5 md:p-7.5 px-6 lg:px-12 z-9999 ${isBlackText ? 'text-black' : 'text-white'}`}
+      className={`absolute inset-x-0 w-full p-4 md:p-7.5 px-4 lg:px-12 z-9999 ${isBlackText ? 'text-black' : 'text-white'}`}
     >
       <nav className="w-full flex items-center justify-between">
         {/* left */}
