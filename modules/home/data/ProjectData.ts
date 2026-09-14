@@ -1,10 +1,11 @@
-interface ProjectDataProps {
+export interface ProjectDataProps {
   id: string;
   title: string;
   subTitle: string;
   year: string;
   img: string;
   video?: string;
+  role: string;
 }
 
 export const projectData: ProjectDataProps[] = [
@@ -15,6 +16,7 @@ export const projectData: ProjectDataProps[] = [
     year: '2026',
     img: 'https://i.pinimg.com/736x/09/66/56/0966567bd74650ab2ef5bf07a1c500e4.jpg',
     video: '',
+    role: 'Development',
   },
   {
     id: '02',
@@ -23,6 +25,7 @@ export const projectData: ProjectDataProps[] = [
     year: '2026',
     img: 'https://i.pinimg.com/736x/02/97/1b/02971b2262a83c859a8edf10132bcb8c.jpg',
     video: '',
+    role: 'Development',
   },
   {
     id: '03',
@@ -31,6 +34,7 @@ export const projectData: ProjectDataProps[] = [
     year: '2026',
     img: 'https://i.pinimg.com/736x/f8/67/f8/f867f87a305d8b97ff6754cbb85e7622.jpg',
     video: '',
+    role: 'Development',
   },
   {
     id: '04',
@@ -39,5 +43,6 @@ export const projectData: ProjectDataProps[] = [
     year: '2025',
     img: 'https://i.pinimg.com/736x/45/2c/fe/452cfe92eccba429deb696a7c68635d0.jpg',
     video: '',
+    role: 'Development',
   },
 ];

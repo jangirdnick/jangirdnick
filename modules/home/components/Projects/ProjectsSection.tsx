@@ -6,10 +6,11 @@ import Button from '../../../../components/Button';
 import Link from 'next/link';
 import { projectData } from '../../data/ProjectData';
 import ProjectCard from './ProjectCard';
+import StarSvg from '../../../../components/StarSvg';
 
 export default function ProjectsSection() {
   return (
-    <section className="w-full px-6 py-0 max-md:pb-12 lg:px-12 xl:py-24 pb-50 space-y-12  relative z-10">
+    <section className="w-full px-4 py-0 max-md:pb-12 lg:px-12 xl:py-24 pb-50 space-y-12  relative z-10">
       <div className="border-t border-gray-300 flex flex-col gap-5 md:gap-6 pt-10 tracking-[-0.04em]">
         <SectionHeading title="Projects" />
 
@@ -20,9 +21,12 @@ export default function ProjectsSection() {
             className=" leading-[0.9]!"
           />
 
-          <p className="font-helveticaMediumItalic text-4xl text-foreground/50 tracking-wide mt-6">
-            04
-          </p>
+          <div>
+            <span className="flex text-3xl md:text-4xl opacity-20 gap-1">
+              04
+              <StarSvg className="fill-foreground! mt-0.5" />
+            </span>
+          </div>
         </div>
       </div>
 

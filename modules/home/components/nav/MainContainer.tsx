@@ -3,6 +3,7 @@
 import { motion } from 'motion/react';
 import { useNav } from './NavContext';
 import NavDesktop from '@/modules/home/components/nav/NavDesktop';
+import Footer from '../Footer/Footer';
 
 interface MainContainerProps {
   children: React.ReactNode;
@@ -29,6 +30,7 @@ export default function MainContainer({ children }: MainContainerProps) {
       >
         <NavDesktop />
         {children}
+        <Footer />
       </motion.div>
     </div>
   );

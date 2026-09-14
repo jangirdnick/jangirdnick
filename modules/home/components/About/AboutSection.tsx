@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function AboutSection() {
   return (
     <section className="w-full">
-      <div className="p-6 py-16 lg:px-12 xl:py-28 flex flex-col gap-8 2xl:gap-10 tracking-[-0.04em]">
+      <div className="p-4 py-16 lg:px-12 xl:py-28 flex flex-col gap-8 2xl:gap-10 tracking-[-0.04em]">
         <SectionHeading />
 
         <div>

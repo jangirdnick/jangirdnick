@@ -9,7 +9,7 @@ interface ProjectCardProps {
   index: number;
 }
 
-export default function ProjectCard({ project, index }: ProjectCardProps) {
+export default function ProjectCard({ project }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -19,13 +19,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
   const imageY = useTransform(scrollYProgress, [0, 1], ['-15%', '15%']);
 
-  const isOddCard = index % 2 === 1;
-
   return (
-    <div
-      ref={cardRef}
-      className={`w-full flex flex-col gap-4 lg:gap-6.5 ${isOddCard && 'md:mt-40 lg:mt-55'}`}
-    >
+    <div ref={cardRef} className={`w-full flex flex-col gap-4 lg:gap-6.5`}>
       <div className="w-full h-[110vw] md:h-[60vw] 2xl:h-250 overflow-hidden relative">
         <motion.img
           src={project.img}

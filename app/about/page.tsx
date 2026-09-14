@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import AboutSection from '../../modules/About/AboutSection';
 import AboutInfo from '../../modules/About/AboutInfo';
-import Footer from '../../modules/home/components/Footer/Footer';
 import SkillExperience from '../../modules/About/Skill & Experience/SkillExperience';
 import Certificates from '../../modules/About/Certificates';
 
@@ -18,8 +17,6 @@ export default function AboutPage() {
       <AboutInfo />
       <SkillExperience />
       <Certificates />
-
-      <Footer />
     </>
   );
 }

@@ -63,15 +63,22 @@ export default function SkillExperience() {
 
   return (
     // Mobile पर 220vh काफी है — desktop पर 320vh
-    <section ref={containerRef} className="relative h-[220vh] md:h-[320vh] w-full">
+    <section
+      ref={containerRef}
+      className="relative h-[220vh] md:h-[320vh] w-full tracking-[-0.04em]"
+    >
       <div className="sticky top-0 h-screen w-full flex flex-col">
         {/* ── Header area ─────────────────────────────────────────── */}
-        <div className="relative px-6 md:px-12 pt-10 md:pt-14 pb-0 flex-none">
+        <div className="relative px-4 md:px-12 pt-10 md:pt-14 pb-0 flex-none">
           {/* Top row: label + CTA */}
           <div className="relative z-10 flex flex-col gap-4 md:gap-8 mb-4 md:mb-8">
             <SectionHeading title="Skill &amp; Experience" />
 
-            <Paragraph text="What I Do timeline" offset={['start 0.99', 'start 0.7']} />
+            <Paragraph
+              text="What I Do timeline"
+              offset={['start 0.99', 'start 0.7']}
+              className="tracking-[-0.04em]!"
+            />
 
             {/* CTA — mobile पर hide, desktop पर show */}
             <div className="hidden md:block">

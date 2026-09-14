@@ -10,7 +10,7 @@ const certifieates = [
 
 export default function Certificates() {
   return (
-    <section className="w-full px-6 md:px-12 pt-20 md:pt-80 xl:pt-100 pb-32 flex flex-col items-center justify-center gap-6">
+    <section className="w-full px-4 md:px-12 pt-20 md:pt-80 xl:pt-100 pb-32 flex flex-col items-center justify-center gap-6">
       <div className="flex flex-col items-center text-center gap-6">
         <SectionHeading title="Certificates" />
         <h2 className="text-[8.8vw] md:text-[6.5vw] lg:text-[5vw] 2xl:text-7xl tracking-[-0.04em] max-2xl:leading-none">
