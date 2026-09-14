@@ -40,7 +40,7 @@ export default function Button({
       {...props}
     >
       {/* ── Text & Icon Roll-Up Container ─────────────────────────── */}
-      <div className="relative z-10 flex items-center gap-3 overflow-hidden h-6">
+      <div className="relative z-2 flex items-center gap-3 overflow-hidden h-6">
         {/* Default Slot (Rolls Up Out) */}
         <motion.div
           animate={{ y: isHovered ? '-100%' : '0%' }}

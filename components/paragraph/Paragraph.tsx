@@ -29,7 +29,7 @@ function ParagraphContent({
   return (
     <div
       ref={containerRef}
-      className={`relative text-[8vw] md:text-[5vw] lg:text-4xl xl:text-5xl 2xl:text-6xl max-md:w-[95%] xl:w-[90%] 2xl:w-[83%]  leading-[1.2] tracking-[-0.02em] ${className} overflow-hidden`}
+      className={`relative text-[8vw] md:text-[5vw] lg:text-4xl xl:text-5xl 2xl:text-6xl max-md:w-full xl:w-[90%] 2xl:w-[83%]  leading-[1.2] tracking-[-0.02em] ${className} overflow-hidden`}
     >
       {showMarkers && <ScrollMarkers progressText={progressText} offset={offset} />}
       {isAnimate
