@@ -45,7 +45,7 @@ export default function HomeSection() {
   const textStroke = useTransform(strokeWidth, (w) => `${w}px #ffffff`);
 
   const heroImageY = useTransform(scrollY, [0, 1000], [0, 300]);
-  const heroImageScale = useTransform(scrollY, [0, 1000], [1.2, 1.5]);
+  const heroImageScale = useTransform(scrollY, [0, 1000], [1.5, 2]);
 
   const heroTextY = useTransform(scrollY, [0, 600], [0, 120]);
   const heroTextOpacity = useTransform(scrollY, [0, 450], [1, 0]);

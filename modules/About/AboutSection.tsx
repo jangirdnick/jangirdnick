@@ -1,5 +1,4 @@
 import CurrentTime from '@/components/CurrentTime';
-import AboutImag from '@/public/About2.jpg';
 import Image from 'next/image';
 
 export default function AboutSection() {
@@ -7,11 +6,11 @@ export default function AboutSection() {
     <section className="relative w-full h-screen flex flex-col justify-end text-white overflow-hidden">
       <div className="w-full h-full">
         <Image
-          src={AboutImag}
+          src={'https://ik.imagekit.io/ey4pcsgfy/section/nick-about-hero-section.webp'}
           alt="About Image"
           width={1000}
           height={1000}
-          className="w-full h-full object-cover pt-10 scale-[1.3] lg:scale-[1.5]"
+          className="w-full h-full object-cover pt-10 scale-[1.1] lg:scale-[1.5]"
           priority
         />
       </div>

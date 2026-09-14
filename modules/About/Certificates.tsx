@@ -1,12 +1,10 @@
 import SectionHeading from '../../components/SectionHeading';
-import Certificate1 from '@/public/Certificate1.png';
-import Certificate2 from '@/public/Certificate2.png';
 
 import Image from 'next/image';
 
 const certifieates = [
-  { img: Certificate1, alt: 'Certificate 1' },
-  { img: Certificate2, alt: 'Certificate 2' },
+  { img: 'https://ik.imagekit.io/ey4pcsgfy/section/nick-certificate1.webp', alt: 'Certificate 1' },
+  { img: 'https://ik.imagekit.io/ey4pcsgfy/section/nick-certificate-2.webp', alt: 'Certificate 2' },
   // { img: '', alt: 'Certificate 3' },
 ];
 
