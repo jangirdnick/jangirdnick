@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: '%s | Nick',
   },
   description:
-    'Portfolio of Jangir D Nick - Web Design, Development, Cloud & DevOps Engineer specializing in performance, security & stability.',
+    'Portfolio of Jangir D Nick - Web Design, Development, Cloud & DevOps Software Engineer specializing in performance, security & stability.',
   keywords: [
     'DevOps Engineer',
     'Cloud Engineer',

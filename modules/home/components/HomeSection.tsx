@@ -45,7 +45,7 @@ export default function HomeSection() {
   const textStroke = useTransform(strokeWidth, (w) => `${w}px #ffffff`);
 
   const heroImageY = useTransform(scrollY, [0, 1000], [0, 300]);
-  const heroImageScale = useTransform(scrollY, [0, 1000], [1.2, 1.5]);
+  const heroImageScale = useTransform(scrollY, [0, 1000], [1.5, 2]);
 
   const heroTextY = useTransform(scrollY, [0, 600], [0, 120]);
   const heroTextOpacity = useTransform(scrollY, [0, 450], [1, 0]);
@@ -59,11 +59,10 @@ export default function HomeSection() {
       >
         <motion.div style={{ scale: heroImageScale }} className="w-full h-full">
           <Image
-            // src="https://ik.imagekit.io/ey4pcsgfy/avatar/jangirdnick.webp"
             src={heroImage}
             alt="hero-image"
-            height={1800}
-            width={1000}
+            height={2000}
+            width={2000}
             className="w-full h-full object-top object-cover md:-ml-3"
             priority
           />
@@ -101,7 +100,7 @@ export default function HomeSection() {
       >
         <motion.h1
           style={{ WebkitTextStroke: textStroke }}
-          className="text-9xl text-white tracking-[-0.95] font-helveticaMediumItalic scale-[1.35] md:scale-[2.35] lg:scale-[3.1] xl:scale-[4.5] 2xl:scale-[5.5] -ml-4 sm:-ml-10 md:-ml-12 lg:-ml-16 xl:-ml-24 whitespace-nowrap"
+          className="text-9xl text-white tracking-[-0.95] font-helveticaMediumItalic scale-[1.35] md:scale-[2.35] lg:scale-[3.1] xl:scale-[4.5] 2xl:scale-[5.5] -ml-4 sm:-ml-10 md:-ml-12 lg:-ml-16 xl:-ml-28 whitespace-nowrap"
         >
           NICK
         </motion.h1>

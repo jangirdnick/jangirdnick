@@ -15,13 +15,17 @@ export default function HomeLayoutClient({ children }: HomeLayoutClientProps) {
     const lenis = new Lenis({
       autoRaf: true,
       smoothWheel: true,
-      syncTouch: true,
-      syncTouchLerp: 0.075,
+      // syncTouch: true,
+      // syncTouchLerp: 0.075,
+      // touchMultiplier: 2.5,
     });
 
-    return () => {
-      lenis.destroy();
-    };
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
   }, []);
 
   // Dynamic tab title change on browser tab switch
