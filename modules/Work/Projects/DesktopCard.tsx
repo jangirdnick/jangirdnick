@@ -63,8 +63,8 @@ export default function DesktopCard({ projectData }: { projectData: ProjectDataP
   const handleRowMouseEnter = (e: React.MouseEvent<HTMLDivElement>, idx: number) => {
     setHoveredIndex(idx);
     const rowElement = e.currentTarget;
-    // Calculate row center Y relative to div
-    const rowCenterY = rowElement.offsetTop + rowElement.offsetHeight / 2 - CARD_H / 2;
+    const gridOffset = (rowElement.offsetParent as HTMLElement)?.offsetTop ?? 0;
+    const rowCenterY = gridOffset + rowElement.offsetTop + rowElement.offsetHeight / 2 - CARD_H / 2;
     rowCenterYRef.current = rowCenterY;
     rawY.set(rowCenterY);
   };
@@ -80,7 +80,7 @@ export default function DesktopCard({ projectData }: { projectData: ProjectDataP
   return (
     <div
       ref={divRef}
-      className="w-full py-20 tracking-[-0.04em] relative hidden md:block"
+      className="w-full py-20 tracking-[-0.04em] relative hidden lg:block"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >

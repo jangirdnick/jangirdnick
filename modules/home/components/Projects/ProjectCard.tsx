@@ -32,7 +32,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
       <div className="space-y-4 md:space-y-1 lg:space-y-3">
         <div className="w-full flex items-center justify-between max-md:border-b border-gray-300 max-md:pb-1">
-          <h1 className="text-[7vw] md:text-[4.7vw] lg:text-5xl tracking-[-0.02em] lg:tracking-[-0.04em]">
+          <h1 className="text-[7vw] md:text-[4vw] lg:text-4xl xl:text-5xl tracking-[-0.02em] lg:tracking-[-0.04em]">
             {project.title}
           </h1>
 
@@ -40,7 +40,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         <div>
-          <p className="text-[3.4vw] md:text-[2vw] lg:text-lg font-helveticaMediumItalic text-foreground/70 leading-none">
+          <p className="text-[3.4vw] md:text-[2vw] lg:text-base xl:text-lg font-helveticaMediumItalic text-foreground/70 leading-none">
             {project.subTitle}
           </p>
         </div>

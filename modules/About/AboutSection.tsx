@@ -8,15 +8,15 @@ export default function AboutSection() {
         <Image
           src={'https://ik.imagekit.io/ey4pcsgfy/section/nick-about-hero-section.webp'}
           alt="About Image"
-          width={1000}
-          height={1000}
-          className="w-full h-full object-cover pt-10 scale-[1.15] lg:scale-[1.5]"
+          width={700}
+          height={700}
+          className="w-full h-full object-cover md:pt-10 max-md:pb-32 scale-[1.45] md:scale-[1.15] lg:scale-[1.5] brightness-[1.1]"
           priority
         />
       </div>
 
-      <div className="absolute bottom-0 w-full flex items-end justify-between p-4 md:p-6 font-helveticaMediumItalic tracking-[-0.04em]">
-        <div className="pl-2">
+      <div className="absolute bottom-10 md:bottom-0 w-full flex items-end justify-between p-4 md:p-6 font-helveticaMediumItalic tracking-[-0.04em]">
+        <div className="pl-2 max-md:pb-5">
           <h1 className="text-[16vw] lg:text-9xl">About</h1>
         </div>
 

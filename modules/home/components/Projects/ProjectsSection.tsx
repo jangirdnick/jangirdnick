@@ -31,9 +31,15 @@ export default function ProjectsSection() {
       </div>
 
       <div className="w-full grid gap-8 lg:gap-4 md:grid-cols-2">
-        {projectData.map((project, index) => (
-          <ProjectCard key={project.id} project={project} index={index} />
-        ))}
+        {projectData.map((project, index) => {
+          const isOdd = index % 2 == 0;
+
+          return (
+            <div key={project.id} className={`${isOdd ? '' : 'lg:mt-32'}`}>
+              <ProjectCard project={project} index={index} />
+            </div>
+          );
+        })}
       </div>
 
       <div className="w-full flex items-center justify-center mt-20">
