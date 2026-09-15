@@ -55,15 +55,15 @@ export default function HomeSection() {
       {/* Hero Image with Parallax & Scale */}
       <motion.div
         style={{ y: heroImageY }}
-        className="hero-image-wraper w-full h-full overflow-hidden brightness-[0.9]"
+        className="hero-image-wraper w-full h-full overflow-hidden"
       >
         <motion.div style={{ scale: heroImageScale }} className="w-full h-full">
           <Image
             src={heroImage}
             alt="hero-image"
-            height={2000}
-            width={2000}
-            className="w-full h-full object-top object-cover md:-ml-3"
+            height={1000}
+            width={1000}
+            className="w-full h-full object-top object-cover md:-ml-3 md:brightness-[0.9] md:contrast-[1.1]"
             priority
           />
         </motion.div>
