@@ -36,7 +36,7 @@ export function FormTextArea({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full bg-transparent border-b border-foreground/20 focus:border-foreground transition-colors py-2 px-0 text-base md:text-lg outline-none resize-none placeholder:text-foreground/30 text-foreground/80"
+        className="w-full bg-transparent border-b border-foreground/20 py-2 px-0 text-base md:text-lg outline-none resize-none text-foreground/80 placeholder:text-foreground/30 transition-colors focus:[border-bottom-color:var(--color-foreground)]"
       />
     </div>
   );

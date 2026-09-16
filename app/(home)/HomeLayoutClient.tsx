@@ -2,9 +2,9 @@
 
 import { useEffect } from 'react';
 import Lenis from 'lenis';
-import { NavProvider } from '@/modules/home/components/nav/NavContext';
-import MainContainer from '@/modules/home/components/nav/MainContainer';
-import MenuNav from '@/modules/home/components/nav/Menu/MenuNav';
+import { NavProvider } from '@/components/nav/NavContext';
+import MainContainer from '@/components/MainContainer';
+import MenuNav from '@/components/nav/Menu/MenuNav';
 
 interface HomeLayoutClientProps {
   children: React.ReactNode;
@@ -35,7 +35,7 @@ export default function HomeLayoutClient({ children }: HomeLayoutClientProps) {
     const handleVisibilityChange = () => {
       if (document.hidden) {
         originalTitle = document.title;
-        document.title = 'Jangir d nick? ☕️';
+        document.title = 'Jangir D Nick? ☕️';
       } else {
         if (originalTitle) {
           document.title = originalTitle;
