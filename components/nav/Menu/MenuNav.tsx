@@ -56,6 +56,8 @@ export default function MenuNav() {
               onClick={toggleMenu}
               className="group flex items-center gap-3 bg-[#1A1813]/90 hover:bg-[#25221B] backdrop-blur-xl border border-white/15 text-white px-3 py-1.5 xl:px-5 xl:py-2.5 rounded-full shadow-2xl transition-all duration-300 cursor-pointer focus:outline-none max-md:mt-1.5"
               aria-label="Toggle Menu"
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
               <span className="text-sm lg:text-xs xl:text-base font-helveticaMediumItalic tracking-wider uppercase text-background/90 group-hover:text-white transition-colors">
                 {isOpen ? 'Close' : 'Menu'}

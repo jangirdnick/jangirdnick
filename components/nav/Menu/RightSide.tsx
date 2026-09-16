@@ -17,35 +17,14 @@ export default function RightSide({ isOpen, setIsOpen }: RightSideProps) {
     <AnimatePresence>
       {isOpen && (
         <motion.aside
+          id="mobile-menu"
+          aria-label="Main menu"
           initial={{ x: '100%' }}
           animate={{ x: 0 }}
           exit={{ x: '100%' }}
           transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
           className="fixed top-0 right-0 h-screen w-full md:w-100 lg:w-110 2xl:w-135 pl-10 lg:pl-20 bg-[#121212] text-white z-99998 shadow-2xl border-l border-white/10 p-10 pt-8 flex flex-col justify-between overflow-hidden"
         >
-          {/* Header */}
-          {/* <div className="flex justify-end ">
-            <button
-              onClick={() => setIsOpen(false)}
-              className="group flex items-center gap-2 text-xl text-background font-thin opacity-70 hover:opacity-100 transition-colors cursor-pointer"
-            >
-              <Link text="Close" href="" className="text-base! md:text-sm! xl:text-base!" />
-
-              <div className="rotate-45 group-hover:rotate-0 duration-300 ease-in-out">
-                <svg
-                  className="w-3.5 h-3.5 md:w-3 md:h-3 2xl:w-4 2xl:h-4"
-                  width={20}
-                  height={20}
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="#fff"
-                >
-                  <path d="M23.9996 12.0235C17.5625 12.4117 12.4114 17.563 12.0232 24H11.9762C11.588 17.563 6.4369 12.4117 0 12.0235V11.9765C6.4369 11.5883 11.588 6.43719 11.9762 0H12.0232C12.4114 6.43719 17.5625 11.5883 23.9996 11.9765V12.0235Z"></path>
-                </svg>
-              </div>
-            </button>
-          </div> */}
-
           {/* Main Nav Links */}
           <nav className="my-auto py-8">
             <ul className="flex flex-col gap-6">

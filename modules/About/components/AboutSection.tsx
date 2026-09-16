@@ -7,7 +7,7 @@ export default function AboutSection() {
       <div className="w-full h-full">
         <Image
           src={'https://ik.imagekit.io/ey4pcsgfy/section/nick-about-hero-section.webp'}
-          alt="About Image"
+          alt="Jangir D Nick — Full-Stack & Cloud Engineer, portrait"
           width={700}
           height={700}
           className="w-full h-full object-cover md:pt-10 max-md:pb-32 scale-[1.45] md:scale-[1.15] lg:scale-[1.5] brightness-[1.1]"

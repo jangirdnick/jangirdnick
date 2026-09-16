@@ -4,7 +4,11 @@ import Paragraph from '../../../components/paragraph/Paragraph';
 
 export default function WorkSection({ projectLength }: { projectLength: number }) {
   return (
-    <section className="w-full px-4 md:px-12 pt-[30vw] md:pt-36 xl:pt-50 space-y-5 tracking-[-0.04em]">
+    // section = thematic intro to the work/projects page
+    <section
+      aria-label="Work overview"
+      className="w-full px-4 md:px-12 pt-[30vw] md:pt-36 xl:pt-50 space-y-5 tracking-[-0.04em]"
+    >
       <SectionHeading title="Projects" />
 
       <div className="flex items-end justify-between gap-4">
@@ -13,7 +17,8 @@ export default function WorkSection({ projectLength }: { projectLength: number }
           className=" w-[70%]! md:w-1/2 lg:w-1/4! tracking-[-0.04em]! max-md:text-[9vw]!"
         />
 
-        <div>
+        {/* Project count — decorative, not meaningful content */}
+        <div aria-hidden="true">
           <span className="flex text-3xl md:text-4xl opacity-20 gap-1">
             {String(projectLength).padStart(2, '0')}
             <StarSvg className="fill-foreground! mt-0.5" />

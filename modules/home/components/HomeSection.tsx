@@ -60,7 +60,7 @@ export default function HomeSection() {
         <motion.div style={{ scale: heroImageScale }} className="w-full h-full">
           <Image
             src={heroImage}
-            alt="hero-image"
+            alt="Jangir D Nick — Full-Stack & Cloud Engineer"
             height={1000}
             width={1000}
             className="w-full h-full object-top object-cover md:-ml-3 md:brightness-[0.9] md:contrast-[1.1]"
@@ -75,11 +75,11 @@ export default function HomeSection() {
         className="absolute top-4/5 md:top-2/5 left-6 sm:left-12 md:left-1/6 -translate-y-4/5 md:-translate-y-2/5 md:-translate-x-1/6  text-white text-3xl md:text-2xl lg:text-xl xl:text-3xl tracking-[-0.04em]! font-helveticaMediumItalic pr-6 md:pr-0 max-md:tracking-[-0.06em]!"
       >
         <h1 className="">Web design &amp; -development</h1>
-        <h1 className="">Cloud DevOps engineer</h1>
-        {/* <h1 className="max-md:text-xl">voor growing businesses that production ready</h1> */}
-        <h1 className="text-background/60 font-helveticaMedium font-thin! text-shadow-xs text-shadow-black/15 max-md:font-thin max-md:text-xl max-md:scale-[1.15] max-md:pl-6">
+        <h2 className="">Cloud DevOps engineer</h2>
+        {/* <p className="max-md:text-xl">voor growing businesses that production ready</p> */}
+        <p className="text-background/60 font-helveticaMedium font-thin! text-shadow-xs text-shadow-black/15 max-md:font-thin max-md:text-xl max-md:scale-[1.15] max-md:pl-6">
           Performance, security &amp; stability
-        </h1>
+        </p>
         {/* <h1 className="text-background/70 font-HelveticaNeueRoman text-shadow-xs text-shadow-black/30 max-md:font-medium max-md:text-lg">
           Guided by performance, security &amp; stability
         </h1> */}
@@ -98,12 +98,13 @@ export default function HomeSection() {
         style={{ y: watermarkY }}
         className="absolute -bottom-25 md:-bottom-32 lg:-bottom-43 xl:-bottom-55 2xl:-bottom-70 left-1/2 -translate-x-1/2 pointer-events-none select-none max-md:hidden"
       >
-        <motion.h1
+        <motion.p
+          aria-hidden="true"
           style={{ WebkitTextStroke: textStroke }}
           className="text-9xl text-white tracking-[-0.95] font-helveticaMediumItalic scale-[1.35] md:scale-[2.35] lg:scale-[3.1] xl:scale-[4.5] 2xl:scale-[5.5] -ml-4 sm:-ml-10 md:-ml-12 lg:-ml-16 xl:-ml-28 whitespace-nowrap"
         >
           NICK
-        </motion.h1>
+        </motion.p>
       </motion.div>
     </section>
   );

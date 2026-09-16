@@ -19,8 +19,8 @@ const getMobileSnapshot = () => window.matchMedia('(max-width: 767px)').matches;
 const getMobileServerSnapshot = () => false;
 
 export default function SkillExperience() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
+  const trackRef = useRef<HTMLUListElement>(null);
   const [scrollDistance, setScrollDistance] = useState<number>(0);
   const isMobile = useSyncExternalStore(
     subscribeMobile,
@@ -54,7 +54,6 @@ export default function SkillExperience() {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    // Mobile पर scroll trigger जल्दी खत्म होे ताकि section बहुत लंबी न लगे
     offset: isMobile ? ['start start', 'end 0.6'] : ['start start', 'end 0.4'],
   });
 
@@ -62,14 +61,15 @@ export default function SkillExperience() {
   const x = useSpring(rawX, { damping: 40, stiffness: 100, mass: 0.2 });
 
   return (
-    // Mobile पर 220vh काफी है — desktop पर 320vh
+    // section = thematic region: Skills & Experience
     <section
       ref={containerRef}
+      aria-label="Skills and experience"
       className="relative h-[220vh] md:h-[320vh] w-full tracking-[-0.04em]"
     >
       <div className="sticky top-0 h-screen w-full flex flex-col">
         {/* ── Header area ─────────────────────────────────────────── */}
-        <div className="relative px-4 md:px-12 pt-10 md:pt-14 pb-0 flex-none">
+        <header className="relative px-4 md:px-12 pt-10 md:pt-14 pb-0 flex-none">
           {/* Top row: label + CTA */}
           <div className="relative z-10 flex flex-col gap-4 md:gap-8 mb-4 md:mb-8">
             <SectionHeading title="Skill &amp; Experience" />
@@ -80,33 +80,37 @@ export default function SkillExperience() {
               className="tracking-[-0.04em]!"
             />
 
-            {/* CTA — mobile पर hide, desktop पर show */}
+            {/* CTA — mobile hide, desktop show */}
             <div className="hidden md:block">
               <Link href="/work">
                 <Button>View my work</Button>
               </Link>
             </div>
           </div>
-        </div>
+        </header>
 
         {/* ── Cards track ─────────────────────────────────────────── */}
-        {/* Mobile: items-center + कम padding; Desktop: items-center + ज़्यादा padding */}
         <div className="relative z-10 flex-1 min-h-0 flex items-center max-md:pb-6">
-          <motion.div
+          {/* ul = unordered list of skill cards */}
+          <motion.ul
             ref={trackRef}
             style={{ x }}
-            className="flex gap-4 md:gap-5 w-max px-6 md:px-28"
+            role="list"
+            aria-label="Skills list"
+            className="flex gap-4 md:gap-5 w-max px-6 md:px-28 list-none"
           >
             {experiences.map((item, index) => (
-              <ExperienceCard
-                key={item.id}
-                item={item}
-                index={index}
-                total={experiences.length}
-                scrollYProgress={scrollYProgress}
-              />
+              // li wraps each skill card
+              <li key={item.id}>
+                <ExperienceCard
+                  item={item}
+                  index={index}
+                  total={experiences.length}
+                  scrollYProgress={scrollYProgress}
+                />
+              </li>
             ))}
-          </motion.div>
+          </motion.ul>
         </div>
       </div>
     </section>
