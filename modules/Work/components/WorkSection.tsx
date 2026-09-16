@@ -15,7 +15,7 @@ export default function WorkSection({ projectLength }: { projectLength: number }
 
         <div>
           <span className="flex text-3xl md:text-4xl opacity-20 gap-1">
-            0{projectLength}
+            {String(projectLength).padStart(2, '0')}
             <StarSvg className="fill-foreground! mt-0.5" />
           </span>
         </div>

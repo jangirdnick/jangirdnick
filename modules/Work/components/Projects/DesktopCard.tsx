@@ -40,7 +40,8 @@ export default function DesktopCard({ projectData }: { projectData: ProjectDataP
     if (!rect) return;
     const x = e.clientX - rect.left;
 
-    rawX.set(x - CARD_W / 2);
+    const maxX = Math.max(0, rect.width - CARD_W);
+    rawX.set(Math.min(Math.max(x - CARD_W / 2, 0), maxX));
     rawY.set(rowCenterYRef.current);
 
     rotateYRaw.set((x / rect.width - 0.5) * 14);
@@ -125,7 +126,6 @@ export default function DesktopCard({ projectData }: { projectData: ProjectDataP
                   fill
                   className="object-cover"
                   sizes="300px"
-                  priority
                 />
               </motion.div>
             );

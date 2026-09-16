@@ -34,7 +34,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         </div>
 
         {/* Hover overlay — index / role / view */}
-        <div className="absolute inset-0 bg-foreground/5 lg:bg-foreground/60 flex flex-col justify-between p-2 md:p-4 lg:p-6 opacity-[1] lg:opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out">
+        <div className="absolute inset-0 bg-foreground/5 lg:bg-foreground/60 flex flex-col justify-between p-2 md:p-4 lg:p-6 opacity-[1] lg:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 ease-out">
           {/* Top: index */}
           <span className="text-background/60 font-helveticaRoman text-[3vw] md:text-[1.5vw] lg:text-sm tabular-nums">
             {String(index + 1).padStart(2, '0')}
