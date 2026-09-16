@@ -13,8 +13,6 @@ const config: Config = {
         helveticaMedium: ['helveticaNeueMedium', 'sans-serif'],
         helveticaMediumItalic: ['helveticaNeueMediumItalic', 'sans-serif'],
         helveticaRoman: ['HelveticaNeueRoman', 'sans-serif'],
-        poppinsSemiBoldItalic: ['PoppinsSemiBoldItalic', 'sans-serif'],
-        poppinsMedium: ['PoppinsMedium', 'sans-serif'],
         poppinsRegular: ['PoppinsRegular', 'sans-serif'],
       },
     },

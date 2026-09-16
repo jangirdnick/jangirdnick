@@ -1,13 +1,29 @@
 import { Metadata } from 'next';
-import AboutSection from '../../modules/About/AboutSection';
-import AboutInfo from '../../modules/About/AboutInfo';
-import SkillExperience from '../../modules/About/Skill & Experience/SkillExperience';
-import Certificates from '../../modules/About/Certificates';
+import AboutSection from '../../modules/About/components/AboutSection';
+import AboutInfo from '../../modules/About/components/AboutInfo';
+import SkillExperience from '../../modules/About/components/Skill & Experience/SkillExperience';
+import Certificates from '../../modules/About/components/Certificates';
 
 export const metadata: Metadata = {
-  title: 'Nick – DevOps & Cloud Engineer | Web Development',
+  title: 'About',
   description:
-    'I am a DevOps & Cloud Engineer with experience in web development. I help businesses grow with custom-tailored websites that match their ambitions.',
+    'About Jangir D Nick — DevOps and cloud engineer who designs and builds high-performing websites. Self-taught full-stack path from independent projects to production systems.',
+  alternates: {
+    canonical: '/about',
+  },
+  openGraph: {
+    title: 'About | Jangir D Nick',
+    description:
+      'DevOps & cloud engineer building standout, high-performing websites. Self-taught full-stack journey — from independent learning to shipping production work.',
+    url: 'https://nickdev.space/about',
+    type: 'profile',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About | Jangir D Nick',
+    description:
+      'DevOps & cloud engineer building standout, high-performing websites. Self-taught full-stack journey — from independent learning to shipping production work.',
+  },
 };
 
 export default function AboutPage() {

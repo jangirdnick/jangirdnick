@@ -1,18 +1,33 @@
 import Image from 'next/image';
 import Link from '../../components/Link';
-import ContactForm from '../../modules/contact/ContactForm';
+import ContactForm from '../../modules/contact/components/ContactForm';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact Jangir d nick | Web Design & Development',
+  title: 'Contact',
   description:
-    'Have an idea, question, or project? Get in touch with Jangir d nick for web design, development, and branding services. Quick response guaranteed.',
+    'Contact Jangir D Nick — share an idea, question, project, or hiring brief. Full-stack and cloud engineering for growing businesses. Fast, thoughtful replies.',
+  alternates: {
+    canonical: '/contact',
+  },
+  openGraph: {
+    title: 'Contact | Jangir D Nick',
+    description:
+      'An idea, a question, a project, or a hire? Message Jangir D Nick for web development, cloud, and product engineering.',
+    url: 'https://nickdev.space/contact',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact | Jangir D Nick',
+    description:
+      'An idea, a question, a project, or a hire? Message Jangir D Nick for web development, cloud, and product engineering.',
+  },
 };
-
-export default function page() {
+export default function ContactPage() {
   return (
     <>
-      <section className="w-full min-h-screen lg:h-screen px-4 md:px-6 xl:px-12 pt-28 md:pt-32 lg:pt-36 pb-8 lg:pb-12 tracking-[-0.04em] flex flex-col justify-center">
+      <section className=" relative w-full min-h-screen lg:h-screen px-4 md:px-6 xl:px-12 pt-28 md:pt-32 lg:pt-36 pb-8 lg:pb-12 tracking-[-0.04em] flex flex-col justify-center">
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-0 xl:gap-12 items-stretch h-full">
           <div className="w-full space-y-6">
             <div className="space-y-6">
@@ -26,8 +41,8 @@ export default function page() {
 
               <div>
                 <p className="w-full lg:w-4/5 text-lg lg:text-base xl:text-lg text-foreground/80">
-                  An idea, a question, a project or just spar? Send me a message. I respond quickly,
-                  like to think along and don&apos;t promise standard copy-paste answer.
+                  A role, a build, a question, or a rough idea? Drop a message. I get back soon,
+                  think alongside you, and keep the conversation real—not scripted.
                 </p>
               </div>
             </div>
@@ -52,6 +67,10 @@ export default function page() {
                   Hello@nickdev.space
                 </Link>
               </div>
+            </div>
+
+            <div className=" absolute left-[-25%] bottom-[-25%] xl:left-[-20%] xl:bottom-[-20%] 2xl:left-[-15%] 2xl:bottom-[-15%] hidden lg:block">
+              <div className="w-100 h-100 border-50 xl:border-60 2xl:border-80 border-gray-200 outline-50 xl:outline-60 2xl:outline-80 outline-gray-100  rounded-full" />
             </div>
           </div>
 

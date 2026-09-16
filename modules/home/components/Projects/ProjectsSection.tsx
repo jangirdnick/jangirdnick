@@ -4,7 +4,7 @@ import SectionHeading from '../../../../components/SectionHeading';
 import Paragraph from '../../../../components/paragraph/Paragraph';
 import Button from '../../../../components/Button';
 import Link from 'next/link';
-import { projectData } from '../../data/ProjectData';
+import { projectData } from '../../../../data/ProjectData';
 import ProjectCard from './ProjectCard';
 import StarSvg from '../../../../components/StarSvg';
 
@@ -43,7 +43,7 @@ export default function ProjectsSection() {
       </div>
 
       <div className="w-full flex items-center justify-center mt-20">
-        <Link href={'/projects'}>
+        <Link href={'/work'}>
           <Button label="All projects" />
         </Link>
       </div>

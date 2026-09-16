@@ -7,7 +7,7 @@ import SectionHeading from '@/components/SectionHeading';
 
 export default function NotFound() {
   return (
-    <section className="relative w-full h-screen flex flex-col justify-center p-8 md:p-16 bg-foreground text-background overflow-hidden selection:bg-orange-600 selection:text-white">
+    <section className="relative w-full h-screen flex flex-col justify-center p-8 md:p-16 bg-foreground text-background overflow-hidden">
       {/* Background Subtle Gradient Glow */}
 
       {/* Header Badge */}

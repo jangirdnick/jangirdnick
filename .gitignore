@@ -49,6 +49,12 @@ yarn-error.log*
 *.swp
 *.swo
 
+# AI Agents & Tooling
+.agents/
+skills-lock.json
+.gemini/
+.claude/
+
 # System files
 .DS_Store
 .DS_Store?
@@ -60,5 +66,5 @@ Thumbs.db
 *.pem
 
 # Misc & Local
-git/*
+git/
 *.tmp
