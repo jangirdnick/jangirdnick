@@ -20,7 +20,7 @@ export default function DesktopCard({ projectData }: { projectData: ProjectDataP
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   // State fallback: last active index so images hold position during fade-out
   const [lastIndex, setLastIndex] = useState(0);
-  const divRef = useRef<HTMLDivElement>(null);
+  const divRef = useRef<HTMLElement>(null);
   const rowCenterYRef = useRef<number>(0);
 
   const rawX = useMotionValue(0);
@@ -52,7 +52,7 @@ export default function DesktopCard({ projectData }: { projectData: ProjectDataP
     rotateZRaw.set(Math.min(Math.max(speedTilt + posTilt, -20), 20));
   };
 
-  const handleRowMouseEnter = (e: React.MouseEvent<HTMLDivElement>, idx: number) => {
+  const handleRowMouseEnter = (e: React.MouseEvent<HTMLElement>, idx: number) => {
     setLastIndex(idx);
     setHoveredIndex(idx);
 
@@ -75,14 +75,17 @@ export default function DesktopCard({ projectData }: { projectData: ProjectDataP
   const activeIndex = hoveredIndex ?? lastIndex;
 
   return (
-    <div
+    // section = thematic container for the interactive desktop project list
+    <section
       ref={divRef}
+      aria-label="Portfolio projects"
       className="w-full py-20 tracking-[-0.04em] relative hidden lg:block"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Floating card — always in DOM, opacity-controlled */}
+      {/* Floating preview card — aria-hidden as it is purely decorative/interactive */}
       <motion.div
+        aria-hidden="true"
         className="pointer-events-none absolute z-50 top-0 left-0"
         style={{
           width: CARD_W,
@@ -142,26 +145,33 @@ export default function DesktopCard({ projectData }: { projectData: ProjectDataP
         </motion.div>
       </motion.div>
 
-      {/* Project rows */}
-      <div className="relative w-full grid divide-y border">
+      {/* Project rows — ol = ordered list, each row is an article */}
+      <ol className="relative w-full grid divide-y border list-none" role="list">
         {projectData.map((project, idx) => (
-          <motion.div
+          <motion.li
             key={project.id}
-            className="w-full flex items-end justify-between px-6 lg:px-12 py-10 lg:py-12 text-base xl:text-lg cursor-default select-none"
             animate={{
               opacity: isVisible && hoveredIndex !== idx ? 0.3 : 1,
             }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
-            onMouseEnter={(e) => handleRowMouseEnter(e, idx)}
           >
-            <p>{project.role}</p>
-            <p className="text-5xl xl:text-6xl 2xl:text-7xl font-helveticaRoman font-thin italic tracking-[-0.04em]">
-              {project.title}
-            </p>
-            <p>{project.year}</p>
-          </motion.div>
+            {/* article = self-contained project entry */}
+            <article
+              className="w-full flex items-end justify-between px-6 lg:px-12 py-10 lg:py-12 text-base xl:text-lg cursor-default select-none"
+              onMouseEnter={(e) => handleRowMouseEnter(e, idx)}
+              aria-label={`${project.title} — ${project.role}, ${project.year}`}
+            >
+              <p className="text-sm text-foreground/60">{project.role}</p>
+              <h2 className="text-5xl xl:text-6xl 2xl:text-7xl font-helveticaRoman font-thin italic tracking-[-0.04em]">
+                {project.title}
+              </h2>
+              <time dateTime={project.year} className="text-sm text-foreground/60">
+                {project.year}
+              </time>
+            </article>
+          </motion.li>
         ))}
-      </div>
-    </div>
+      </ol>
+    </section>
   );
 }

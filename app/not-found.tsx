@@ -36,7 +36,7 @@ export default function NotFound() {
             Page Not Found
           </h2>
           <p className="text-sm md:text-base text-background/60 font-helveticaRoman">
-            The page you are looking for doesn’t exist or has been moved to another URL.
+            The page you are looking for doesn&apos;t exist or has been moved to another URL.
           </p>
         </motion.div>
 

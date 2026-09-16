@@ -9,23 +9,25 @@ export default function FooterSocial({
   className2?: string;
 }) {
   return (
-    <div className={`flex flex-col gap-1 text-background ${className}`}>
+    // nav = social links navigation (secondary site links)
+    <nav aria-label="Social links" className={`flex flex-col gap-1 text-background ${className}`}>
       <div>
-        <p className="text-sm 2xl:text-base tracking-[-0.04em] uppercase">Socials</p>
+        <h4 className="text-sm 2xl:text-base tracking-[-0.04em] uppercase">Socials</h4>
       </div>
-      <div className={`flex flex-wrap gap-4 text-xs md:text-sm ${className2}`}>
+      <ul className={`flex flex-wrap gap-4 text-xs md:text-sm list-none ${className2}`}>
         {socialLinks.map((s) => (
-          <Link
-            key={s.label}
-            href={s.href}
-            target="_blank"
-            rel="noreferrer"
-            className="text-background/50 hover:text-background transition-colors max-md:text-base"
-          >
-            {s.label}
-          </Link>
+          <li key={s.label}>
+            <Link
+              href={s.href}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="text-background/50 hover:text-background transition-colors max-md:text-base"
+            >
+              {s.label}
+            </Link>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </nav>
   );
 }

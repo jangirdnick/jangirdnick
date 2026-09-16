@@ -11,7 +11,7 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, index }: ProjectCardProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: cardRef,
@@ -21,22 +21,30 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   const imageY = useTransform(scrollYProgress, [0, 1], ['-15%', '15%']);
 
   return (
-    <div ref={cardRef} className="w-full flex flex-col gap-4 lg:gap-6.5">
-      {/* Image with parallax + hover overlay */}
-      <div className="group w-full h-[110vw] md:h-[60vw] 2xl:h-250 overflow-hidden relative">
+    // article = self-contained piece of content (portfolio project)
+    <article
+      ref={cardRef}
+      aria-label={`Project: ${project.title}`}
+      className="w-full flex flex-col gap-4 lg:gap-6.5"
+    >
+      {/* figure wraps the image + overlay as a labelled media unit */}
+      <figure className="group w-full h-[110vw] md:h-[60vw] 2xl:h-250 overflow-hidden relative m-0">
         <div className="w-full h-full scale-100 group-hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] origin-center">
           <motion.img
             src={project.img}
-            alt={project.title}
+            alt={`${project.title} — ${project.subTitle}`}
             style={{ y: imageY }}
             className="w-full h-[130%] object-cover relative top-[-15%]"
           />
         </div>
 
         {/* Hover overlay — index / role / view */}
-        <div className="absolute inset-0 bg-foreground/5 lg:bg-foreground/60 flex flex-col justify-between p-2 md:p-4 lg:p-6 opacity-[1] lg:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 ease-out">
+        <figcaption className="absolute inset-0 bg-foreground/5 lg:bg-foreground/60 flex flex-col justify-between p-2 md:p-4 lg:p-6 opacity-[1] lg:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 ease-out">
           {/* Top: index */}
-          <span className="text-background/60 font-helveticaRoman text-[3vw] md:text-[1.5vw] lg:text-sm tabular-nums">
+          <span
+            aria-label={`Project number ${index + 1}`}
+            className="text-background/60 font-helveticaRoman text-[3vw] md:text-[1.5vw] lg:text-sm tabular-nums"
+          >
             {String(index + 1).padStart(2, '0')}
           </span>
 
@@ -50,8 +58,9 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               <Link
                 href={project.view}
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
                 text="View →"
+                aria-label={`View ${project.title} live`}
                 className="text-background hover:text-background/70 transition-colors text-[3vw] md:text-[1.5vw] lg:text-sm"
               />
             ) : (
@@ -60,26 +69,30 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               </span>
             )}
           </div>
-        </div>
-      </div>
+        </figcaption>
+      </figure>
 
-      {/* Card info */}
+      {/* Card info — title, year, description */}
       <div className="space-y-4 md:space-y-2 lg:space-y-3">
         {/* Title row */}
         <div className="w-full flex items-center justify-between max-md:border-b border-gray-300 max-md:pb-1">
           <h2 className="text-[7vw] md:text-[4vw] lg:text-4xl xl:text-5xl tracking-[-0.02em] lg:tracking-[-0.04em]">
             {project.title}
           </h2>
-          <span className="text-[3vw] md:text-[1.5vw] lg:text-sm xl:text-base text-foreground/50 font-helveticaRoman tabular-nums">
+          {/* time = machine-readable date for search engines freshness signal */}
+          <time
+            dateTime={project.year}
+            className="text-[3vw] md:text-[1.5vw] lg:text-sm xl:text-base text-foreground/50 font-helveticaRoman tabular-nums"
+          >
             {project.year}
-          </span>
+          </time>
         </div>
 
-        {/* Subtitle */}
+        {/* Subtitle / description */}
         <p className="text-[3.4vw] md:text-[2vw] lg:text-base xl:text-lg font-helveticaMediumItalic text-foreground/70 leading-none">
           {project.subTitle}
         </p>
       </div>
-    </div>
+    </article>
   );
 }

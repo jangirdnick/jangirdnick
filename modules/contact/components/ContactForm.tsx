@@ -61,6 +61,7 @@ export default function ContactForm() {
         </div>
       ) : (
         <form
+          aria-label="Contact form"
           onSubmit={handleSubmit}
           className="space-y-6 md:space-y-8 flex flex-col justify-between h-full"
         >
@@ -80,8 +81,8 @@ export default function ContactForm() {
           <FormTextArea
             id="description"
             name="description"
-            label="Tell us a little more about your project:"
-            placeholder="Project beschrijving"
+            label="Tell us a little more about your subject:"
+            placeholder="Details about subject"
             rows={4}
             value={formData.description}
             onChange={handleChange}

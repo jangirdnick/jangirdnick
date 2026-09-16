@@ -31,7 +31,7 @@ export default function Footer() {
               <div className="w-22 h-22 lg:h-24 lg:w-24 xl:w-32 xl:h-32 2xl:w-40 2xl:h-40">
                 <Image
                   src="https://ik.imagekit.io/ey4pcsgfy/avatar/jangirdnick-passport.webp"
-                  alt=""
+                  alt="Jangir D Nick avatar"
                   width={100}
                   height={100}
                   className="w-full h-full object-cover"

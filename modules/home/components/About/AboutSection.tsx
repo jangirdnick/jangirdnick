@@ -5,7 +5,8 @@ import Link from 'next/link';
 
 export default function AboutSection() {
   return (
-    <section className="w-full">
+    // section = thematic intro on home page pointing to full About page
+    <section aria-label="About Nick" className="w-full">
       <div className="p-4 py-16 lg:px-12 xl:py-28 flex flex-col gap-8 2xl:gap-10 tracking-[-0.04em]">
         <SectionHeading />
 
