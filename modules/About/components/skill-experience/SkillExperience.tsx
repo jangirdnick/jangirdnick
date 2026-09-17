@@ -8,15 +8,11 @@ import ExperienceCard from './ExperienceCard';
 import { experiences } from '../../../../data/experiences';
 import Paragraph from '../../../../components/paragraph/Paragraph';
 import SectionHeading from '../../../../components/SectionHeading';
-
-const subscribeMobile = (callback: () => void) => {
-  const mq = window.matchMedia('(max-width: 767px)');
-  mq.addEventListener('change', callback);
-  return () => mq.removeEventListener('change', callback);
-};
-
-const getMobileSnapshot = () => window.matchMedia('(max-width: 767px)').matches;
-const getMobileServerSnapshot = () => false;
+import {
+  subscribeMobile,
+  getMobileSnapshot,
+  getMobileServerSnapshot,
+} from '../../../../lib/useIsMobile';
 
 export default function SkillExperience() {
   const containerRef = useRef<HTMLElement>(null);

@@ -3,6 +3,11 @@
 import { useState, useSyncExternalStore } from 'react';
 import { motion, MotionValue, useSpring, useTransform } from 'motion/react';
 import { ExperiencesType } from '../../../../types';
+import {
+  subscribeMobile,
+  getMobileSnapshot,
+  getMobileServerSnapshot,
+} from '../../../../lib/useIsMobile';
 
 function StarIcon({ className }: { className?: string }) {
   return (
@@ -17,15 +22,6 @@ function StarIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-
-const subscribeMobile = (callback: () => void) => {
-  const mq = window.matchMedia('(max-width: 767px)');
-  mq.addEventListener('change', callback);
-  return () => mq.removeEventListener('change', callback);
-};
-
-const getMobileSnapshot = () => window.matchMedia('(max-width: 767px)').matches;
-const getMobileServerSnapshot = () => false;
 
 export default function ExperienceCard({
   item,

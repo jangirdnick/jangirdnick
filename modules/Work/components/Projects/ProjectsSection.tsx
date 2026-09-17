@@ -1,22 +1,36 @@
-import ProjectCard from '../../../home/components/Projects/ProjectCard';
+'use client';
+
+import ProjectCard from '../../../home/components/projects/ProjectCard';
 import { ProjectDataProps } from '../../../../data/ProjectData';
 import DesktopCard from './DesktopCard';
+import { useSyncExternalStore } from 'react';
+import {
+  subscribeDesktop,
+  getDesktopSnapshot,
+  getDesktopServerSnapshot,
+} from '../../../../lib/useIsMobile';
 
 export default function ProjectsSection({ projectData }: { projectData: ProjectDataProps[] }) {
+  const isDesktop = useSyncExternalStore(
+    subscribeDesktop,
+    getDesktopSnapshot,
+    getDesktopServerSnapshot
+  );
+
   return (
     // section = thematic region containing all project listings
     <section aria-label="All projects">
-      {/* Desktop interactive list */}
-      <DesktopCard projectData={projectData} />
-
-      {/* Mobile card grid — ol = ordered list of portfolio items */}
-      <ol className="w-full grid md:grid-cols-2 gap-8 lg:hidden list-none" role="list">
-        {projectData.map((project, index) => (
-          <li key={project.id}>
-            <ProjectCard project={project} index={index} />
-          </li>
-        ))}
-      </ol>
+      {isDesktop ? (
+        <DesktopCard projectData={projectData} />
+      ) : (
+        <ol className="w-full grid md:grid-cols-2 gap-8 lg:hidden list-none px-2 pt-4" role="list">
+          {projectData.map((project, index) => (
+            <li key={project.id}>
+              <ProjectCard project={project} index={index} />
+            </li>
+          ))}
+        </ol>
+      )}
     </section>
   );
 }

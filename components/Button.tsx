@@ -8,6 +8,12 @@ export interface ButtonProps extends HTMLMotionProps<'button'> {
   children?: React.ReactNode;
 }
 
+// Module-level constants — stable references, allocated once
+const HOVER_TRANSITION = { duration: 0.6, ease: 'easeOut' } as const;
+const HOVER_SCALE: number[] = [1, 1.05, 0.9, 1.02, 1];
+const ROLL_TRANSITION = { duration: 0.4, ease: [0.76, 0, 0.24, 1] } as const;
+const FILL_TRANSITION = { duration: 0.45, ease: [0.76, 0, 0.24, 1] } as const;
+
 export default function Button({
   label = 'More about me',
   children,
@@ -31,8 +37,8 @@ export default function Button({
         disabled
           ? undefined
           : {
-              scale: [1, 1.05, 0.9, 1.02, 1],
-              transition: { duration: 0.6, ease: 'easeOut' },
+              scale: HOVER_SCALE,
+              transition: HOVER_TRANSITION,
             }
       }
       whileTap={disabled ? undefined : { scale: 0.92 }}
@@ -44,7 +50,7 @@ export default function Button({
         {/* Default Slot (Rolls Up Out) */}
         <motion.div
           animate={{ y: isHovered ? '-100%' : '0%' }}
-          transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
+          transition={ROLL_TRANSITION}
           className="flex items-center gap-2 xl:gap-3"
         >
           <span className="font-helveticaMedium  tracking-wide">{content}</span>
@@ -60,7 +66,7 @@ export default function Button({
         {/* Hovered Slot (Rolls Up In from Below) */}
         <motion.div
           animate={{ y: isHovered ? '-100%' : '0%' }}
-          transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
+          transition={ROLL_TRANSITION}
           className="absolute left-0 top-full flex items-center gap-3 text-white mt-0.5"
         >
           <span className="font-helveticaMedium tracking-wide">{content}</span>
@@ -90,7 +96,7 @@ export default function Button({
                 borderTopRightRadius: '100%',
               }
         }
-        transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1] }}
+        transition={FILL_TRANSITION}
         className="absolute inset-0 z-1 w-full h-[140%] bg-orange-600 pointer-events-none"
       />
     </motion.button>

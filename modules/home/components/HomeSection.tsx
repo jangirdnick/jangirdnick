@@ -1,23 +1,27 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform, useSpring } from 'motion/react';
 import Button from '../../../components/Button';
 
+// Module-level stable references — never re-created on render
+const subscribeWindowWidth = (callback: () => void): (() => void) => {
+  window.addEventListener('resize', callback);
+  return () => window.removeEventListener('resize', callback);
+};
+const getWindowWidthSnapshot = (): number => window.innerWidth;
+// Server snapshot: assume desktop width to match the desktop-first image choice
+const getWindowWidthServerSnapshot = (): number => 1200;
+
 export default function HomeSection() {
   const { scrollY } = useScroll();
 
-  const [windowWidth, setWindowWidth] = useState<number>(1200);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const windowWidth = useSyncExternalStore(
+    subscribeWindowWidth,
+    getWindowWidthSnapshot,
+    getWindowWidthServerSnapshot
+  );
 
   // Responsive breakpoints according to window.innerWidth
   const is2xl = windowWidth >= 1536;

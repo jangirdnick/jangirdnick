@@ -6,17 +6,21 @@ export type ExperiencesType = {
 
 // Contact Page
 
-export interface FormData {
+export interface ContactFormData {
   name: string;
   email: string;
   subject: string;
   description: string;
 }
 
-export interface FormFieldsPeops {
+export type FormData = ContactFormData;
+
+export interface FormFieldsProps {
   id: string;
-  name: keyof FormData;
+  name: keyof ContactFormData;
   type: string;
   label: string;
   placeholder: string;
 }
+
+export type FormFieldsPeops = FormFieldsProps;

@@ -1,19 +1,6 @@
 import SectionHeading from '../../../components/SectionHeading';
 import Image from 'next/image';
-
-const certificates = [
-  {
-    img: 'https://ik.imagekit.io/ey4pcsgfy/section/nick-certificate1.webp',
-    alt: 'Jangir D Nick — Professional Certification 1',
-    title: 'Professional Certification 1',
-  },
-  {
-    img: 'https://ik.imagekit.io/ey4pcsgfy/section/nick-certificate-2.webp',
-    alt: 'Jangir D Nick — Professional Certification 2',
-    title: 'Professional Certification 2',
-  },
-  // { img: '', alt: 'Certificate 3', title: 'Certificate 3' },
-];
+import { certificates } from '../../../data/certificates';
 
 export default function Certificates() {
   return (

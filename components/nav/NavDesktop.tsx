@@ -2,17 +2,11 @@
 
 import { usePathname } from 'next/navigation';
 import Link from '@/components/Link';
+import { navLinks } from '@/data/NavLinks';
 
 export default function NavDesktop() {
   const pathname = usePathname();
   const isBlackText = pathname?.startsWith('/work') || pathname?.startsWith('/contact');
-
-  const navLinks: { label: string; href: string }[] = [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Work', href: '/work' },
-    { label: 'Contact', href: '/contact' },
-  ];
 
   return (
     <header
@@ -34,7 +28,7 @@ export default function NavDesktop() {
 
         {/* right: navigation links */}
         <div className="max-md:hidden">
-          <ul className="flex items-center gap-10">
+          <ul className="flex items-center gap-10 list-none">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link

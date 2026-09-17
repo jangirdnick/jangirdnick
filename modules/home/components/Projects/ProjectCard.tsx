@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { projectData } from '../../../../data/ProjectData';
 import Link from '../../../../components/Link';
@@ -30,12 +31,15 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       {/* figure wraps the image + overlay as a labelled media unit */}
       <figure className="group w-full h-[110vw] md:h-[60vw] 2xl:h-250 overflow-hidden relative m-0">
         <div className="w-full h-full scale-100 group-hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] origin-center">
-          <motion.img
-            src={project.img}
-            alt={`${project.title} — ${project.subTitle}`}
-            style={{ y: imageY }}
-            className="w-full h-[130%] object-cover relative top-[-15%]"
-          />
+          <motion.div style={{ y: imageY }} className="w-full h-[130%] relative -top-[15%]">
+            <Image
+              src={project.img}
+              alt={`${project.title} — ${project.subTitle}`}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </motion.div>
         </div>
 
         {/* Hover overlay — index / role / view */}
