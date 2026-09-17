@@ -39,26 +39,24 @@ export default function Link({
     : '';
 
   return (
-    <motion.li className="list-none inline-block">
-      <NextLink
-        href={href}
-        onClick={onClick}
-        target={target}
-        rel={rel}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onFocus={() => setIsHovered(true)}
-        onBlur={() => setIsHovered(false)}
-        className={`relative inline-flex items-center group cursor-pointer text-xs xl:text-sm 2xl:text-base ${className}`}
+    <NextLink
+      href={href}
+      onClick={onClick}
+      target={target}
+      rel={rel}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsHovered(true)}
+      onBlur={() => setIsHovered(false)}
+      className={`relative inline-flex items-center group cursor-pointer text-xs xl:text-sm 2xl:text-base ${className}`}
+    >
+      <motion.span
+        animate={isAnimate && isHovered ? { skewX: -1 } : { skewX: 0 }}
+        transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
+        className={`relative inline-block font-thin py-0.5 ${animationClasses}`}
       >
-        <motion.span
-          animate={isAnimate && isHovered ? { skewX: -1 } : { skewX: 0 }}
-          transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
-          className={`relative inline-block font-thin py-0.5 ${animationClasses}`}
-        >
-          {content}
-        </motion.span>
-      </NextLink>
-    </motion.li>
+        {content}
+      </motion.span>
+    </NextLink>
   );
 }

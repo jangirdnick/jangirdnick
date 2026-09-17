@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring } from 'motion/react';
 import { ProjectDataProps } from '../../../../data/ProjectData';
 
@@ -22,6 +22,7 @@ export default function DesktopCard({ projectData }: { projectData: ProjectDataP
   const [lastIndex, setLastIndex] = useState(0);
   const divRef = useRef<HTMLElement>(null);
   const rowCenterYRef = useRef<number>(0);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const rawX = useMotionValue(0);
   const rawY = useMotionValue(0);
@@ -34,6 +35,12 @@ export default function DesktopCard({ projectData }: { projectData: ProjectDataP
   const rotateY = useSpring(rotateYRaw, SLOW_SPRING);
   const rotateX = useSpring(rotateXRaw, SLOW_SPRING);
   const rotateZ = useSpring(rotateZRaw, ROTATE_SPRING);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const rect = divRef.current?.getBoundingClientRect();
@@ -50,6 +57,13 @@ export default function DesktopCard({ projectData }: { projectData: ProjectDataP
     const speedTilt = Math.min(Math.max(movementX * 1.2, -12), 12);
     const posTilt = (x / rect.width - 0.5) * 16;
     rotateZRaw.set(Math.min(Math.max(speedTilt + posTilt, -20), 20));
+
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
+      rotateYRaw.set(0);
+      rotateXRaw.set(0);
+      rotateZRaw.set(0);
+    }, 100);
   };
 
   const handleRowMouseEnter = (e: React.MouseEvent<HTMLElement>, idx: number) => {
@@ -68,6 +82,7 @@ export default function DesktopCard({ projectData }: { projectData: ProjectDataP
     rotateZRaw.set(0);
     rotateXRaw.set(0);
     rotateYRaw.set(0);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
   };
 
   const isVisible = hoveredIndex !== null;
@@ -151,23 +166,26 @@ export default function DesktopCard({ projectData }: { projectData: ProjectDataP
           <motion.li
             key={project.id}
             animate={{
-              opacity: isVisible && hoveredIndex !== idx ? 0.3 : 1,
+              opacity: isVisible && hoveredIndex !== idx ? 0.7 : 1,
             }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
+            className="group"
           >
             {/* article = self-contained project entry */}
             <article
-              className="w-full flex items-end justify-between px-6 lg:px-12 py-10 lg:py-12 text-base xl:text-lg cursor-default select-none"
+              className=" relative z-1 w-full flex items-end justify-between px-6 lg:px-12 py-10 lg:py-12 text-base xl:text-lg cursor-pointer select-none"
               onMouseEnter={(e) => handleRowMouseEnter(e, idx)}
               aria-label={`${project.title} — ${project.role}, ${project.year}`}
             >
-              <p className="text-sm text-foreground/60">{project.role}</p>
+              <p className="text-sm xl:text-base text-foreground/60">{project.role}</p>
               <h2 className="text-5xl xl:text-6xl 2xl:text-7xl font-helveticaRoman font-thin italic tracking-[-0.04em]">
                 {project.title}
               </h2>
-              <time dateTime={project.year} className="text-sm text-foreground/60">
+              <time dateTime={project.year} className="text-sm xl:text-base text-foreground/60">
                 {project.year}
               </time>
+
+              <div className="absolute bottom-0 inset-x-0 -z-1 w-full h-0 bg-orange-600 group-hover:h-full ease-in-out duration-500" />
             </article>
           </motion.li>
         ))}

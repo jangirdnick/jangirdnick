@@ -6,38 +6,26 @@ import { useNav } from '../NavContext';
 
 const RightSide = lazy(() => import('./RightSide'));
 
+// Single source of truth for the mobile breakpoint check
+const getIsMobile = (): boolean => typeof window !== 'undefined' && window.innerWidth < 768;
+
 export default function MenuNav() {
   const { scrollY } = useScroll();
   const [isVisible, setIsVisible] = useState(false);
   const { isOpen, setIsOpen, toggleMenu } = useNav();
 
   useEffect(() => {
-    const updateVisibility = (y: number) => {
-      const isMobile = window.innerWidth < 768;
-      if (isMobile || y > 120) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+    const updateVisibility = () => {
+      setIsVisible(getIsMobile() || scrollY.get() > 120);
     };
 
-    updateVisibility(scrollY.get());
-
-    const handleResize = () => {
-      updateVisibility(scrollY.get());
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    updateVisibility();
+    window.addEventListener('resize', updateVisibility);
+    return () => window.removeEventListener('resize', updateVisibility);
   }, [scrollY]);
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    if (isMobile || latest > 120) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
+    setIsVisible(getIsMobile() || latest > 120);
   });
 
   return (

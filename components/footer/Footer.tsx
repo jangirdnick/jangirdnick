@@ -1,32 +1,18 @@
-'use client';
-
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
 import Button from '../Button';
 import Image from 'next/image';
 import FooterSocial from '../nav/Menu/FooterSocial';
+import FooterAnimated from './FooterAnimated';
+import CurrentYear from './CurrentYear';
 
 export default function Footer() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end end'],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [5, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [0.4, 1]);
-  const scale = useTransform(scrollYProgress, [0, 1], [0.99, 1]);
-
   return (
     <footer
-      ref={containerRef}
       aria-label="Site footer"
       className="relative max-md:h-[150vw] md:h-130 max-xl:h-100 2xl:h-150 w-full"
       style={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' }}
     >
       <div className="fixed bottom-0 left-0 right-0 w-full bg-foreground text-background overflow-hidden -z-10 px-4 md:px-12">
-        <motion.div style={{ y, opacity, scale }} className="w-full h-full flex flex-col ">
+        <FooterAnimated>
           <div className="flex items-end justify-between pb-10 pt-24">
             <div className="flex items-center gap-4">
               <div className="w-22 h-22 lg:h-24 lg:w-24 xl:w-32 xl:h-32 2xl:w-40 2xl:h-40">
@@ -59,9 +45,11 @@ export default function Footer() {
               />
             </address>
 
-            <div className="flex md:items-end justify-between  tracking-[-0.04em] text-sm md:text-[11px] xl:text-xs 2xl:text-sm max-md:flex-col-reverse max-md:gap-20">
-              <div className="flex items-center gap-16 2xl:gap-22 max-md:justify-between md:pb-2">
-                <small className="text-background/60">© {new Date().getFullYear()} - Nick</small>
+            <div className="flex md:items-end justify-between tracking-[-0.04em] text-sm md:text-[11px] xl:text-xs 2xl:text-sm max-md:flex-col-reverse max-md:gap-20">
+              <div className="flex items-center gap-16 2xl:gap-22 max-md:justify-between md:pb-1">
+                <p className="text-background/60">
+                  © <CurrentYear /> - Nick
+                </p>
                 <p>Privacy Policy</p>
               </div>
 
@@ -71,7 +59,7 @@ export default function Footer() {
               />
             </div>
           </div>
-        </motion.div>
+        </FooterAnimated>
       </div>
     </footer>
   );

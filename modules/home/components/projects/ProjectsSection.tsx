@@ -13,9 +13,9 @@ export default function ProjectsSection() {
     // section = thematic grouping of portfolio projects
     <section
       aria-label="Selected projects"
-      className="w-full px-4 py-0 max-md:pb-12 lg:px-12 xl:py-24 pb-50 space-y-12 relative z-10"
+      className="w-full px-4 py-0 pb-20 lg:px-12 xl:py-24 xl:pb-50 space-y-8 lg:space-y-12 relative z-10"
     >
-      <header className="border-t border-gray-300 flex flex-col gap-5 md:gap-6 pt-10 tracking-[-0.04em]">
+      <header className="border-t border-gray-300 flex flex-col gap-5 md:gap-6 pt-10 tracking-[-0.04em] max-md:px-2">
         <SectionHeading title="Projects" />
 
         <div className="flex items-end justify-between">

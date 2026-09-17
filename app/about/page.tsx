@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
-import AboutSection from '../../modules/About/components/AboutSection';
-import AboutInfo from '../../modules/About/components/AboutInfo';
-import SkillExperience from '../../modules/About/components/Skill & Experience/SkillExperience';
-import Certificates from '../../modules/About/components/Certificates';
+import AboutSection from '../../modules/about/components/AboutSection';
+import AboutInfo from '../../modules/about/components/AboutInfo';
+import SkillExperience from '../../modules/about/components/skill-experience/SkillExperience';
+import Certificates from '../../modules/about/components/Certificates';
 import JsonLd from '../../components/JsonLd';
 
 export const metadata: Metadata = {

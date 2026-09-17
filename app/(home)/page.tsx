@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import AboutSection from '../../modules/home/components/About/AboutSection';
-import HomeSection from '../../modules/home/components/HomeSection';
-import ProjectsSection from '../../modules/home/components/Projects/ProjectsSection';
-import JsonLd from '../../components/JsonLd';
+import AboutSection from '@/modules/home/components/about/AboutSection';
+import HomeSection from '@/modules/home/components/HomeSection';
+import ProjectsSection from '@/modules/home/components/projects/ProjectsSection';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Jangir D Nick | Full-Stack & Cloud Engineer',

@@ -12,6 +12,8 @@ interface HomeLayoutClientProps {
 
 export default function HomeLayoutClient({ children }: HomeLayoutClientProps) {
   useEffect(() => {
+    // autoRaf: true — Lenis manages its own requestAnimationFrame loop internally.
+    // Do NOT also call requestAnimationFrame manually — that creates a second loop.
     const lenis = new Lenis({
       autoRaf: true,
       smoothWheel: true,
@@ -20,12 +22,9 @@ export default function HomeLayoutClient({ children }: HomeLayoutClientProps) {
       // touchMultiplier: 2.5,
     });
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
+    return () => {
+      lenis.destroy();
+    };
   }, []);
 
   // Dynamic tab title change on browser tab switch

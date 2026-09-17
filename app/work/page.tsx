@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
-import WorkSection from '../../modules/Work/components/WorkSection';
+import WorkSection from '../../modules/work/components/WorkSection';
 import { projectData } from '../../data/ProjectData';
-import ProjectsSection from '../../modules/Work/components/Projects/ProjectsSection';
+import ProjectsSection from '@/modules/work/components/projects/ProjectsSection';
 import JsonLd from '../../components/JsonLd';
 
 export const metadata: Metadata = {
