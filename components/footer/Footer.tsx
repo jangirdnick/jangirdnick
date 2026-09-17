@@ -2,6 +2,7 @@ import Button from '../Button';
 import Image from 'next/image';
 import FooterSocial from '../nav/Menu/FooterSocial';
 import FooterAnimated from './FooterAnimated';
+import CurrentYear from './CurrentYear';
 
 export default function Footer() {
   return (
@@ -46,7 +47,9 @@ export default function Footer() {
 
             <div className="flex md:items-end justify-between tracking-[-0.04em] text-sm md:text-[11px] xl:text-xs 2xl:text-sm max-md:flex-col-reverse max-md:gap-20">
               <div className="flex items-center gap-16 2xl:gap-22 max-md:justify-between md:pb-1">
-                <p className="text-background/60">© 2026 - Nick</p>
+                <p className="text-background/60">
+                  © <CurrentYear /> - Nick
+                </p>
                 <p>Privacy Policy</p>
               </div>
 
