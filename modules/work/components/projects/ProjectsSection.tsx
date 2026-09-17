@@ -1,6 +1,6 @@
 'use client';
 
-import ProjectCard from '../../../home/components/projects/ProjectCard';
+import ProjectCard from '@/modules/home/components/projects/ProjectCard';
 import { ProjectDataProps } from '../../../../data/ProjectData';
 import DesktopCard from './DesktopCard';
 import { useSyncExternalStore } from 'react';
