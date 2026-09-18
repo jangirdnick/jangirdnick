@@ -5,6 +5,7 @@ import Lenis from 'lenis';
 import { NavProvider } from '@/components/nav/NavContext';
 import MainContainer from '@/components/MainContainer';
 import MenuNav from '@/components/nav/Menu/MenuNav';
+import PageLoader from '@/components/loader/PageLoader';
 
 interface HomeLayoutClientProps {
   children: React.ReactNode;
@@ -51,7 +52,9 @@ export default function HomeLayoutClient({ children }: HomeLayoutClientProps) {
   return (
     <NavProvider>
       <MenuNav />
-      <MainContainer>{children}</MainContainer>
+      <PageLoader>
+        <MainContainer>{children}</MainContainer>
+      </PageLoader>
     </NavProvider>
   );
 }
