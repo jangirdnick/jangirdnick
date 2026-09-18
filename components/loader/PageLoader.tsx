@@ -91,7 +91,7 @@ export default function PageLoader({ children }: { children: React.ReactNode }) 
   const isExiting = phase === 'exiting' || phase === 'done';
 
   return (
-    <div className="relative min-h-screen w-full  bg-black">
+    <div className="relative min-h-screen w-full bg-foreground">
       <AnimatePresence>
         {phase !== 'done' && (
           <motion.div
@@ -154,20 +154,22 @@ export default function PageLoader({ children }: { children: React.ReactNode }) 
 
       {/* PAGE REVEAL — same timeline as loader exit */}
       <motion.div
-        initial={{ scale: 0.8, filter: 'blur(1px)', rotate: 1 }}
+        initial={{ opacity: 0.7, scale: 0.8, filter: 'blur(1px)', rotate: 1 }}
         animate={
           isExiting
             ? {
+                opacity: 1,
                 scale: 1,
                 filter: 'blur(0px)',
                 rotate: 0,
                 transition: { duration: DURATION_CLOSE, ease: EASE_SMOOTH_OUT },
               }
-            : { scale: 0.8, filter: 'blur(1px)', rotate: 1 }
+            : { opacity: 0.7, scale: 0.8, filter: 'blur(1px)', rotate: 1 }
         }
-        style={phase === 'done' ? { transform: 'none', filter: 'none' } : undefined}
-        className={`w-full origin-center will-change-transform ${
-          phase === 'done' ? '' : 'h-screen overflow-hidden'
+        transformTemplate={phase === 'done' ? () => 'none' : undefined}
+        style={phase === 'done' ? { filter: 'none' } : undefined}
+        className={`w-full origin-center ${
+          phase === 'done' ? '' : 'will-change-transform h-screen overflow-hidden'
         }`}
       >
         {children}

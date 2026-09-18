@@ -6,6 +6,7 @@ import { NavProvider } from '@/components/nav/NavContext';
 import MainContainer from '@/components/MainContainer';
 import MenuNav from '@/components/nav/Menu/MenuNav';
 import PageLoader from '@/components/loader/PageLoader';
+import PageTransition from '@/components/transition/PageTransition';
 
 interface HomeLayoutClientProps {
   children: React.ReactNode;
@@ -53,7 +54,9 @@ export default function HomeLayoutClient({ children }: HomeLayoutClientProps) {
     <NavProvider>
       <MenuNav />
       <PageLoader>
-        <MainContainer>{children}</MainContainer>
+        <MainContainer>
+          <PageTransition>{children}</PageTransition>
+        </MainContainer>
       </PageLoader>
     </NavProvider>
   );
