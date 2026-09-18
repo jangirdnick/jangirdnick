@@ -1,7 +1,7 @@
 'use client';
 
-import { useRef, useEffect, useState, useSyncExternalStore } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'motion/react';
+import { useRef, useEffect, useSyncExternalStore } from 'react';
+import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'motion/react';
 import Button from '../../../../components/Button';
 import Link from 'next/link';
 import ExperienceCard from './ExperienceCard';
@@ -17,7 +17,10 @@ import {
 export default function SkillExperience() {
   const containerRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLUListElement>(null);
-  const [scrollDistance, setScrollDistance] = useState<number>(0);
+  // useMotionValue instead of useState — useTransform reactively tracks motion values,
+  // not plain JS variables. With useState, useTransform's output range was locked to
+  // the initial value (0) and never updated when the loader finished.
+  const scrollDistanceMV = useMotionValue(0);
   const isMobile = useSyncExternalStore(
     subscribeMobile,
     getMobileSnapshot,
@@ -30,30 +33,40 @@ export default function SkillExperience() {
         const trackWidth = trackRef.current.scrollWidth;
         const viewportWidth = window.innerWidth;
         const distance = Math.max(0, trackWidth - viewportWidth + 64);
-        setScrollDistance(distance);
+        scrollDistanceMV.set(distance);
       }
     };
 
     updateDistance();
-    const timer = setTimeout(updateDistance, 150);
+    // Short delay for initial render
+    const timer1 = setTimeout(updateDistance, 150);
+    // Longer delay to run AFTER PageLoader finishes its exit animation (~500ms total)
+    const timer2 = setTimeout(updateDistance, 800);
 
     const resizeObserver = new ResizeObserver(updateDistance);
     if (trackRef.current) resizeObserver.observe(trackRef.current);
+    if (containerRef.current) resizeObserver.observe(containerRef.current);
 
     window.addEventListener('resize', updateDistance);
     return () => {
-      clearTimeout(timer);
+      clearTimeout(timer1);
+      clearTimeout(timer2);
       resizeObserver.disconnect();
       window.removeEventListener('resize', updateDistance);
     };
-  }, []);
+  }, [scrollDistanceMV]);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: isMobile ? ['start start', 'end 0.6'] : ['start start', 'end 0.4'],
   });
 
-  const rawX = useTransform(scrollYProgress, [0, 1], [0, -scrollDistance]);
+  // useTransform now uses scrollDistanceMV (a motion value) as the multiplier
+  // so the output range updates reactively when the loader releases the layout
+  const rawX = useTransform(
+    [scrollYProgress, scrollDistanceMV],
+    ([progress, distance]: number[]) => progress * -distance
+  );
   const x = useSpring(rawX, { damping: 40, stiffness: 100, mass: 0.2 });
 
   return (
