@@ -3,6 +3,7 @@ import Link from '../../components/Link';
 import ContactForm from '../../modules/contact/components/ContactForm';
 import { Metadata } from 'next';
 import JsonLd from '../../components/JsonLd';
+import Paragraph from '../../components/paragraph/Paragraph';
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -71,30 +72,33 @@ export default function ContactPage() {
           <div className="w-full space-y-6">
             <div className="space-y-6">
               <div>
-                <h1 className="text-4xl xl:text-6xl font-medium">
-                  — Together one
-                  <br />
-                  project starten?
+                <h1 className="w-[90%] md:w-[60%] xl:w-[80%]">
+                  <Paragraph mode="loader" className="text-4xl! xl:text-6xl! font-medium!">
+                    — Together one project starten?
+                  </Paragraph>
                 </h1>
               </div>
 
               <div>
-                <p className="w-full lg:w-4/5 text-lg lg:text-base xl:text-lg text-foreground/80">
-                  A role, a build, a question, or a rough idea? Drop a message. I get back soon,
-                  think alongside you, and keep the conversation real—not scripted.
-                </p>
+                <Paragraph
+                  mode="loader"
+                  text="A role, a build, a question, or a rough idea? Drop a message. I get back soon,
+                  think alongside you, and keep the conversation real—not scripted."
+                  className="w-full lg:w-4/5! text-lg! lg:text-base! xl:text-lg! text-foreground/80!"
+                />
               </div>
             </div>
 
             <address className="flex items-end gap-3 pt-4 not-italic">
               <div className="w-24 h-24 lg:w-24 lg:h-24 xl:w-28 xl:h-28 overflow-hidden shrink-0">
                 <Image
-                  src="https://ik.imagekit.io/ey4pcsgfy/avatar/jangirdnick-passport.webp"
+                  src="https://ik.imagekit.io/ey4pcsgfy/avatar/jangirdnick-passport.webp?tr=w-300,q-80"
                   alt="Jangir D Nick — Full-Stack & Cloud Engineer"
                   width={100}
                   height={100}
                   className="w-full h-full object-cover"
                   priority
+                  unoptimized
                 />
               </div>
 

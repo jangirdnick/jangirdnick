@@ -13,6 +13,7 @@ export default function WorkSection({ projectLength }: { projectLength: number }
 
       <div className="flex items-end justify-between gap-4">
         <Paragraph
+          mode="loader"
           text="Websites built with attention"
           className=" w-[70%]! md:w-1/2 lg:w-1/4! tracking-[-0.04em]! max-md:text-[9vw]!"
         />

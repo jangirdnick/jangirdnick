@@ -3,6 +3,7 @@
 import { useState, useEffect, lazy } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'motion/react';
 import { useNav } from '../NavContext';
+import { usePageLoader } from '../../loader/PageLoader';
 
 const RightSide = lazy(() => import('./RightSide'));
 
@@ -13,6 +14,7 @@ export default function MenuNav() {
   const { scrollY } = useScroll();
   const [isVisible, setIsVisible] = useState(false);
   const { isOpen, setIsOpen, toggleMenu } = useNav();
+  const { isLoaded, isInitialLoad } = usePageLoader();
 
   useEffect(() => {
     const updateVisibility = () => {
@@ -34,10 +36,18 @@ export default function MenuNav() {
       <AnimatePresence>
         {isVisible && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            initial={
+              isInitialLoad
+                ? { y: -50, opacity: 0, scale: 0.9 }
+                : { opacity: 0, scale: 0.9, y: -10 }
+            }
+            animate={isLoaded ? { opacity: 1, scale: 1, y: 0 } : { y: -50, opacity: 0, scale: 0.9 }}
+            exit={{ opacity: 0, scale: 0.9, y: -10 }}
+            transition={{
+              duration: 0.35,
+              ease: [0.16, 1, 0.3, 1],
+              delay: !isInitialLoad && getIsMobile() ? 1.2 : 0,
+            }}
             className="fixed top-2.5 md:top-6 right-4 md:right-8 z-999999"
           >
             <button

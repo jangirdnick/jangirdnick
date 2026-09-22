@@ -2,6 +2,7 @@ import Paragraph from '../../../components/paragraph/Paragraph';
 import Button from '../../../components/Button';
 import SectionHeading from '../../../components/SectionHeading';
 import Link from 'next/link';
+import StarSvg from '../../../components/StarSvg';
 
 export default function AboutInfo() {
   return (
@@ -24,7 +25,10 @@ export default function AboutInfo() {
       </div>
 
       {/* Background story */}
-      <div className="border-t border-b border-gray-300 py-8 flex justify-between max-md:flex-col max-md:gap-6">
+      <div className=" relative border-t border-b border-gray-300 py-8 flex justify-between max-lg:flex-col max-lg:gap-6">
+        <div className=" absolute -top-1/6 md:-top-1/3 right-2">
+          <StarSvg className="w-8! h-8! fill-gray-200!" />
+        </div>
         <header>
           <SectionHeading title="What I did then" />
         </header>
@@ -32,7 +36,7 @@ export default function AboutInfo() {
         {/* article = self-contained biography / origin story */}
         <article
           aria-label="Nick's career origin story"
-          className="w-full md:w-[70%] grid md:grid-cols-2 gap-8"
+          className="w-full lg:w-[70%] grid md:grid-cols-2 gap-8"
         >
           <p className="text-xs xl:text-base text-foreground/60 tracking-[-0.01em]">
             With a background as a failed YouTuber, I spent years from 2019 to 2023 building

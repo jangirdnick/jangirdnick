@@ -10,7 +10,11 @@ import {
   getDesktopServerSnapshot,
 } from '../../../../lib/useIsMobile';
 
-export default function ProjectsSection({ projectData }: { projectData: ProjectDataProps[] }) {
+interface ProjectsSectionProps {
+  projectData: ProjectDataProps[];
+}
+
+export default function ProjectsSection({ projectData }: ProjectsSectionProps) {
   const isDesktop = useSyncExternalStore(
     subscribeDesktop,
     getDesktopSnapshot,
@@ -26,7 +30,7 @@ export default function ProjectsSection({ projectData }: { projectData: ProjectD
         <ol className="w-full grid md:grid-cols-2 gap-8 lg:hidden list-none px-2 pt-4" role="list">
           {projectData.map((project, index) => (
             <li key={project.id}>
-              <ProjectCard project={project} index={index} />
+              <ProjectCard project={project} index={index} isAnimate={true} />
             </li>
           ))}
         </ol>

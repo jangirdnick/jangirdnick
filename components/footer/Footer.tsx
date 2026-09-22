@@ -3,6 +3,7 @@ import Image from 'next/image';
 import FooterSocial from '../nav/Menu/FooterSocial';
 import FooterAnimated from './FooterAnimated';
 import CurrentYear from './CurrentYear';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -17,11 +18,12 @@ export default function Footer() {
             <div className="flex items-center gap-4">
               <div className="w-22 h-22 lg:h-24 lg:w-24 xl:w-32 xl:h-32 2xl:w-40 2xl:h-40">
                 <Image
-                  src="https://ik.imagekit.io/ey4pcsgfy/avatar/jangirdnick-passport.webp"
+                  src="https://ik.imagekit.io/ey4pcsgfy/avatar/jangirdnick-passport.webp?tr=w-400,q-80"
                   alt="Jangir D Nick avatar"
                   width={100}
                   height={100}
                   className="w-full h-full object-cover"
+                  unoptimized
                 />
               </div>
 
@@ -39,10 +41,12 @@ export default function Footer() {
           <div className="border-t border-background/20 pt-8 text-sm text-background/60 space-y-20 xl:space-y-30">
             {/* address = machine-readable contact info (email) */}
             <address className="not-italic">
-              <Button
-                label="Hello@nickdev.space"
-                className="bg-background! text-foreground! text-xl md:text-sm! xl:text-lg! 2xl:text-xl!"
-              />
+              <Link href={'mailto:Hello@nickdev.space'}>
+                <Button
+                  label="Hello@nickdev.space"
+                  className="bg-background! text-foreground! text-xl md:text-sm! xl:text-lg! 2xl:text-xl!"
+                />
+              </Link>
             </address>
 
             <div className="flex md:items-end justify-between tracking-[-0.04em] text-sm md:text-[11px] xl:text-xs 2xl:text-sm max-md:flex-col-reverse max-md:gap-20">
