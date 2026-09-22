@@ -71,16 +71,16 @@ export default function ExperienceCard({
       {/* Orange liquid fill — decorative */}
       <motion.div
         aria-hidden="true"
-        initial={{ top: '101%', borderTopLeftRadius: '100%', borderTopRightRadius: '100%' }}
+        initial={{ y: '101%', borderTopLeftRadius: '100%', borderTopRightRadius: '100%' }}
         animate={
           hovered
             ? {
-                top: '0%',
+                y: '0%',
                 borderTopLeftRadius: ['100%', '40%', '0%'],
                 borderTopRightRadius: ['100%', '40%', '0%'],
               }
             : {
-                top: '101%',
+                y: '101%',
                 borderTopLeftRadius: '100%',
                 borderTopRightRadius: '100%',
               }

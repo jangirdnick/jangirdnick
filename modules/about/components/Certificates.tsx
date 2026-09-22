@@ -32,6 +32,7 @@ export default function Certificates() {
                 width={500}
                 height={500}
                 className="w-full h-full object-contain"
+                unoptimized
               />
               <figcaption className="sr-only">{certificate.title}</figcaption>
             </figure>

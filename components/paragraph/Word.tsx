@@ -2,7 +2,7 @@
 
 import { memo } from 'react';
 import { motion, useTransform } from 'motion/react';
-import { WordProps } from './types';
+import { WordProps, LoaderWordProps } from './types';
 
 /**
  * Individual Word component with bottom-to-top overflow mask animation.
@@ -17,6 +17,36 @@ export const Word = memo(function Word({ word, index, progress, range }: WordPro
     <span className="inline-block overflow-hidden align-bottom mr-[0.25em] py-[0.05em] my-[-0.05em]">
       <motion.span
         style={{ y }}
+        className={`inline-block ${isHighlighted ? 'text-orange-600' : ''}`}
+      >
+        {word}
+      </motion.span>
+    </span>
+  );
+});
+
+/**
+ * Individual Word component synced with PageLoader exit (Staggered load-based).
+ * Wrapped in React.memo to avoid unnecessary re-renders.
+ */
+export const LoaderWord = memo(function LoaderWord({
+  word,
+  index,
+  isLoaded,
+  staggerDelay = 0.1,
+}: LoaderWordProps) {
+  const isHighlighted = index === 14 || index === 15 || index === 22;
+
+  return (
+    <span className="inline-block overflow-hidden align-bottom mr-[0.25em] py-[0.05em] my-[-0.05em]">
+      <motion.span
+        initial={{ y: '100%' }}
+        animate={isLoaded ? { y: '0%' } : { y: '100%' }}
+        transition={{
+          duration: isLoaded ? 2 : 0.5,
+          ease: [0.22, 1, 0.36, 1],
+          delay: staggerDelay + index * 0.03,
+        }}
         className={`inline-block ${isHighlighted ? 'text-orange-600' : ''}`}
       >
         {word}

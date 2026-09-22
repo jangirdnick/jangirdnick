@@ -1,28 +1,38 @@
 'use client';
 
+import { motion } from 'motion/react';
 import { usePathname } from 'next/navigation';
 import Link from '@/components/Link';
+import NextLink from 'next/link';
 import { navLinks } from '@/data/NavLinks';
+import { usePageLoader } from '@/components/loader/PageLoader';
 
 export default function NavDesktop() {
   const pathname = usePathname();
   const isBlackText = pathname?.startsWith('/work') || pathname?.startsWith('/contact');
+  const { isLoaded, isInitialLoad } = usePageLoader();
+
   return (
-    <header
+    <motion.header
+      initial={isInitialLoad ? { y: -50, opacity: 0 } : false}
+      animate={isLoaded ? { y: 0, opacity: 1 } : { y: -50, opacity: 0 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
       className={`absolute inset-x-0 w-full p-4 md:p-7.5 px-4 lg:px-12 z-9999 ${isBlackText ? 'text-black' : 'text-white'}`}
     >
       <nav className="w-full flex items-center justify-between">
         {/* left: brand / logo */}
-        <div className="flex items-center">
-          <div
-            className={`relative w-4 h-4 md:w-3 md:h-3 xl:w-4 xl:h-4 rounded-full ${isBlackText ? 'bg-black' : 'bg-white'}`}
-          />
-          <div>
-            {/* p not h1 — the brand name in nav is NOT the page heading */}
-            <p className="text-2xl md:text-xl xl:text-3xl font-helveticaMediumItalic pt-0.5 tracking-[-0.9] -ml-0.5">
-              -Nick
-            </p>
-          </div>
+        <div>
+          <NextLink href={'/'} className="flex items-center">
+            <div
+              className={`relative w-4 h-4 md:w-3 md:h-3 xl:w-4 xl:h-4 rounded-full ${isBlackText ? 'bg-black' : 'bg-white'} duration-300 ease-in-out`}
+            />
+            <div>
+              {/* p not h1 — the brand name in nav is NOT the page heading */}
+              <p className="text-2xl md:text-xl xl:text-3xl font-helveticaMediumItalic pt-0.5 tracking-[-0.9] -ml-0.5">
+                -Nick
+              </p>
+            </div>
+          </NextLink>
         </div>
 
         {/* right: navigation links */}
@@ -40,6 +50,6 @@ export default function NavDesktop() {
           </ul>
         </div>
       </nav>
-    </header>
+    </motion.header>
   );
 }

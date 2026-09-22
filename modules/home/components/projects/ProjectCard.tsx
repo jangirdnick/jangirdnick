@@ -2,17 +2,20 @@
 
 import { useRef } from 'react';
 import Image from 'next/image';
+import NextLink from 'next/link';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { projectData } from '../../../../data/ProjectData';
-import Link from '../../../../components/Link';
+import { usePageLoader } from '@/components/loader/PageLoader';
 
 interface ProjectCardProps {
   project: (typeof projectData)[number];
   index: number;
+  isAnimate?: boolean;
 }
 
-export default function ProjectCard({ project, index }: ProjectCardProps) {
+export default function ProjectCard({ project, index, isAnimate = true }: ProjectCardProps) {
   const cardRef = useRef<HTMLElement>(null);
+  const { isLoaded } = usePageLoader();
 
   const { scrollYProgress } = useScroll({
     target: cardRef,
@@ -21,23 +24,43 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
   const imageY = useTransform(scrollYProgress, [0, 1], ['-15%', '15%']);
 
-  return (
-    // article = self-contained piece of content (portfolio project)
-    <article
+  const articleContent = (
+    <motion.article
       ref={cardRef}
       aria-label={`Project: ${project.title}`}
-      className="w-full flex flex-col gap-4 lg:gap-6.5"
+      initial={isAnimate && { height: '80%', opacity: 0 }}
+      animate={{
+        height: !isAnimate || isLoaded ? '100%' : '80%',
+        opacity: !isAnimate || isLoaded ? 1 : 0,
+      }}
+      transition={{
+        height: {
+          duration: 0.6,
+          ease: [0.22, 1, 0.36, 1],
+          delay: isAnimate && isLoaded ? 0.1 + index * 0.08 : 0,
+        },
+        opacity: {
+          duration: 0.6,
+          ease: 'easeOut',
+          delay: isAnimate && isLoaded ? 0.1 + index * 0.08 : 0,
+        },
+      }}
+      className="w-full flex flex-col gap-4 lg:gap-6.5 overflow-hidden group/card cursor-pointer"
     >
       {/* figure wraps the image + overlay as a labelled media unit */}
       <figure className="group w-full h-[110vw] md:h-[60vw] 2xl:h-250 overflow-hidden relative m-0">
         <div className="w-full h-full scale-100 group-hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] origin-center">
-          <motion.div style={{ y: imageY }} className="w-full h-[130%] relative -top-[15%]">
+          <motion.div
+            style={{ y: imageY }}
+            className="w-full h-[130%] relative -top-[12%] will-change-transform"
+          >
             <Image
               src={project.img}
               alt={`${project.title} — ${project.subTitle}`}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
+              width={1000}
+              height={1000}
+              className=" w-full h-full object-contain scale-x-[1.1] scale-y-[1.29] md:scale-y-[1.4] xl:scale-y-[1.3]"
+              unoptimized
             />
           </motion.div>
         </div>
@@ -59,14 +82,14 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             </span>
 
             {project.view ? (
-              <Link
-                href={project.view}
-                target="_blank"
-                rel="noreferrer noopener"
-                text="View →"
+              <span
                 aria-label={`View ${project.title} live`}
-                className="text-background hover:text-background/70 transition-colors text-[3vw] md:text-[1.5vw] lg:text-sm"
-              />
+                className="text-background group-hover/card:text-background/70 transition-colors text-[3vw] md:text-[1.5vw] lg:text-sm relative inline-flex items-center group cursor-pointer"
+              >
+                <span className="relative inline-block font-thin py-0.5 before:absolute before:bottom-1 before:left-0 before:h-px before:w-full before:bg-background/80 before:content-[''] before:transition-transform before:duration-300 before:ease-out before:origin-right before:scale-x-0 hover/card:before:origin-left hover/card:before:scale-x-100 cursor-pointer">
+                  View →
+                </span>
+              </span>
             ) : (
               <span className="text-background/30 font-helveticaRoman text-[3vw] md:text-[1.5vw] lg:text-sm italic">
                 Coming soon
@@ -97,6 +120,21 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           {project.subTitle}
         </p>
       </div>
-    </article>
+    </motion.article>
   );
+
+  if (project.view) {
+    return (
+      <NextLink
+        href={project.view}
+        target="_blank"
+        rel="noreferrer noopener"
+        className="block w-full"
+      >
+        {articleContent}
+      </NextLink>
+    );
+  }
+
+  return articleContent;
 }

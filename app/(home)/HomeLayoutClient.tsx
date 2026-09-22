@@ -8,6 +8,8 @@ import MenuNav from '@/components/nav/Menu/MenuNav';
 import PageLoader from '@/components/loader/PageLoader';
 import PageTransition from '@/components/transition/PageTransition';
 
+import { setLenisInstance } from '@/components/nav/LenisControl';
+
 interface HomeLayoutClientProps {
   children: React.ReactNode;
 }
@@ -19,12 +21,14 @@ export default function HomeLayoutClient({ children }: HomeLayoutClientProps) {
     const lenis = new Lenis({
       autoRaf: true,
       smoothWheel: true,
-      // syncTouch: true,
-      // syncTouchLerp: 0.075,
-      // touchMultiplier: 2.5,
+      autoResize: true,
+      // easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
 
+    setLenisInstance(lenis);
+
     return () => {
+      setLenisInstance(null);
       lenis.destroy();
     };
   }, []);

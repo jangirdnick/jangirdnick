@@ -1,6 +1,37 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import HomeLayoutClient from './(home)/HomeLayoutClient';
+import JsonLd from '@/components/JsonLd';
+
+const globalSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://nickdev.space/#website',
+      url: 'https://nickdev.space',
+      name: 'Jangir D Nick',
+      description:
+        'Full-stack engineer building web products, APIs, and cloud systems with React, Next.js, Node.js, Nest.js, AWS, and Docker.',
+      publisher: {
+        '@id': 'https://nickdev.space/#person',
+      },
+    },
+    {
+      '@type': 'Person',
+      '@id': 'https://nickdev.space/#person',
+      name: 'Jangir D Nick',
+      url: 'https://nickdev.space',
+      image: 'https://ik.imagekit.io/ey4pcsgfy/avatar/jangirdnick.webp',
+      jobTitle: 'Full-Stack & Cloud Engineer',
+      sameAs: [
+        'https://github.com/jangirdnick',
+        'https://linkedin.com/in/jangirdnick',
+        'https://twitter.com/jangirdnick',
+      ],
+    },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://nickdev.space'),
@@ -74,6 +105,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning className="h-full antialiased">
       <body className="min-h-full flex flex-col selection:bg-orange-600 selection:text-white">
+        <JsonLd data={globalSchema} />
         <HomeLayoutClient>{children}</HomeLayoutClient>
       </body>
     </html>

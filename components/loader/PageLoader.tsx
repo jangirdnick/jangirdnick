@@ -1,7 +1,21 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'motion/react';
+
+interface PageLoaderContextType {
+  phase: 'loading' | 'exiting' | 'done';
+  isLoaded: boolean;
+  isInitialLoad: boolean;
+}
+
+const PageLoaderContext = createContext<PageLoaderContextType>({
+  phase: 'done',
+  isLoaded: true,
+  isInitialLoad: false,
+});
+
+export const usePageLoader = () => useContext(PageLoaderContext);
 
 /* ═══════════════════════════════════════════════
    PREMIUM MOTION CONFIG (Token-aligned)
@@ -91,89 +105,106 @@ export default function PageLoader({ children }: { children: React.ReactNode }) 
   const isExiting = phase === 'exiting' || phase === 'done';
 
   return (
-    <div className="relative min-h-screen w-full bg-foreground">
-      <AnimatePresence>
-        {phase !== 'done' && (
-          <motion.div
-            key="loader"
-            initial={{ opacity: 1 }}
-            animate={
-              isExiting
-                ? {
-                    opacity: 0,
-                    filter: 'blur(0.5px)',
-                    scale: 1.05,
-                    transition: { duration: DURATION_CLOSE, ease: EASE_SMOOTH_OUT },
-                  }
-                : { opacity: 1, scale: 1 }
-            }
-            onAnimationComplete={() => {
-              if (phase === 'exiting') setPhase('done');
-            }}
-            className="fixed inset-0 z-9999 overflow-hidden bg-background flex items-center justify-center will-change-transform"
-          >
+    <PageLoaderContext.Provider
+      value={{ phase, isLoaded: isExiting, isInitialLoad: phase !== 'done' }}
+    >
+      <div
+        className={`relative min-h-screen w-full ${phase === 'done' ? 'bg-background' : 'bg-foreground'}`}
+      >
+        <AnimatePresence>
+          {phase !== 'done' && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, filter: 'blur(4px)' }}
+              key="loader"
+              initial={{ opacity: 1 }}
               animate={
                 isExiting
                   ? {
                       opacity: 0,
-                      scale: 1.1,
-                      filter: 'blur(4px)',
+                      filter: 'blur(0.5px)',
+                      scale: 1.05,
                       transition: { duration: DURATION_CLOSE, ease: EASE_SMOOTH_OUT },
                     }
-                  : {
-                      opacity: 1,
-                      scale: 1,
-                      filter: 'blur(0px)',
-                      transition: { duration: DURATION_OPEN, ease: EASE_SMOOTH_OUT },
-                    }
+                  : { opacity: 1, scale: 1 }
               }
+              onAnimationComplete={() => {
+                if (phase === 'exiting') setPhase('done');
+              }}
+              className="fixed inset-0 z-9999 overflow-hidden bg-background flex items-center justify-center will-change-transform"
             >
-              <div className="flex flex-col items-center gap-2">
-                <div className="flex items-center">
-                  <div className="relative w-4 h-4 md:w-3 md:h-3 xl:w-4 xl:h-4 rounded-full bg-black" />
-                  <div>
-                    <p className="text-2xl md:text-xl xl:text-3xl font-helveticaMediumItalic pt-0.5 tracking-[-0.9]">
-                      -Nick
-                    </p>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, filter: 'blur(4px)' }}
+                animate={
+                  isExiting
+                    ? {
+                        opacity: 0,
+                        scale: 1.1,
+                        filter: 'blur(4px)',
+                        transition: { duration: DURATION_CLOSE, ease: EASE_SMOOTH_OUT },
+                      }
+                    : {
+                        opacity: 1,
+                        scale: 1,
+                        filter: 'blur(0px)',
+                        transition: { duration: DURATION_OPEN, ease: EASE_SMOOTH_OUT },
+                      }
+                }
+              >
+                <div className="flex flex-col items-center gap-2">
+                  <div className="flex items-center">
+                    <div className="relative w-4 h-4 md:w-3 md:h-3 xl:w-4 xl:h-4 rounded-full bg-black" />
+                    <div>
+                      <p className="text-2xl md:text-xl xl:text-3xl font-helveticaMediumItalic pt-0.5 tracking-[-0.9]">
+                        -Nick
+                      </p>
+                    </div>
+                  </div>
+                  {/* Progress bar */}
+                  <div className="w-[90%] h-[2px] bg-black/10 rounded-full overflow-hidden">
+                    <motion.div
+                      className="h-full bg-black origin-left"
+                      style={{ scaleX: progressScaleX }}
+                    />
                   </div>
                 </div>
-                {/* Progress bar */}
-                <div className="w-[90%] h-[2px] bg-black/10 rounded-full overflow-hidden">
-                  <motion.div
-                    className="h-full bg-black origin-left"
-                    style={{ scaleX: progressScaleX }}
-                  />
-                </div>
-              </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>
 
-      {/* PAGE REVEAL — same timeline as loader exit */}
-      <motion.div
-        initial={{ opacity: 0.7, scale: 0.8, filter: 'blur(1px)', rotate: 1 }}
-        animate={
-          isExiting
-            ? {
-                opacity: 1,
-                scale: 1,
-                filter: 'blur(0px)',
-                rotate: 0,
-                transition: { duration: DURATION_CLOSE, ease: EASE_SMOOTH_OUT },
-              }
-            : { opacity: 0.7, scale: 0.8, filter: 'blur(1px)', rotate: 1 }
-        }
-        transformTemplate={phase === 'done' ? () => 'none' : undefined}
-        style={phase === 'done' ? { filter: 'none' } : undefined}
-        className={`w-full origin-center ${
-          phase === 'done' ? '' : 'will-change-transform h-screen overflow-hidden'
-        }`}
-      >
-        {children}
-      </motion.div>
-    </div>
+        {/* PAGE REVEAL — same timeline as loader exit */}
+        <motion.div
+          initial={{ opacity: 0.7, scale: 0.8, filter: 'blur(1px)', rotate: 1 }}
+          animate={
+            isExiting
+              ? {
+                  opacity: 1,
+                  scale: 1,
+                  filter: 'blur(0px)',
+                  rotate: 0,
+                  transition: { duration: DURATION_CLOSE, ease: EASE_SMOOTH_OUT },
+                }
+              : { opacity: 0.7, scale: 0.8, filter: 'blur(1px)', rotate: 1 }
+          }
+          className={`w-full origin-center ${
+            phase === 'done' ? '' : 'will-change-transform h-screen overflow-hidden'
+          }`}
+          onAnimationComplete={() => {
+            if (phase === 'done' || phase === 'exiting') {
+              // Safely remove the style attribute after the animation finishes
+              // This removes any lingering transform/filter properties from the HTML
+              requestAnimationFrame(() => {
+                const el = document.getElementById('page-reveal-wrapper');
+                if (el) {
+                  el.removeAttribute('style');
+                }
+              });
+            }
+          }}
+          id="page-reveal-wrapper"
+        >
+          {children}
+        </motion.div>
+      </div>
+    </PageLoaderContext.Provider>
   );
 }

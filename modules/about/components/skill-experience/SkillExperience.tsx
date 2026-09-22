@@ -90,7 +90,7 @@ export default function SkillExperience() {
             />
 
             {/* CTA — mobile hide, desktop show */}
-            <div className="hidden md:block">
+            <div>
               <Link href="/work">
                 <Button>View my work</Button>
               </Link>
@@ -99,7 +99,7 @@ export default function SkillExperience() {
         </header>
 
         {/* ── Cards track ─────────────────────────────────────────── */}
-        <div className="relative z-10 flex-1 min-h-0 flex items-center max-md:pb-6">
+        <div className="relative z-10 flex-1 min-h-0 flex items-center max-md:pb-6 touch-pan-y">
           {/* ul = unordered list of skill cards */}
           <motion.ul
             ref={trackRef}

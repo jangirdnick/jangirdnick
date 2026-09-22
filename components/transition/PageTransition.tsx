@@ -13,10 +13,10 @@ export default function PageTransition({ children }: { children: React.ReactNode
         key={pathname}
         initial={{
           opacity: 0.96,
-          scale: 1.01,
+          scale: 1.02,
           x: '-0.1%',
-          y: '0.4%',
-          filter: 'blur(2.5px) contrast(1.1)',
+          y: '0.75%',
+          filter: 'blur(2.4px) contrast(1.1)',
         }}
         animate={{
           opacity: 1,
@@ -27,12 +27,12 @@ export default function PageTransition({ children }: { children: React.ReactNode
         }}
         exit={{
           opacity: 0.96,
-          scale: 1.01,
+          scale: 1.02,
           x: '-0.1%',
-          y: '0.4%',
-          filter: 'blur(2.5px) contrast(1.1)',
+          y: '0.75%',
+          filter: 'blur(2.4px) contrast(1.1)',
         }}
-        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="w-full origin-center"
       >
         <FrozenRouter>{children}</FrozenRouter>
