@@ -120,31 +120,33 @@ export default function HomeSection() {
       </motion.div>
 
       {/* Responsive Watermark element (Refactored to SVG for GPU performance) */}
-      <motion.div
-        style={{ y: watermarkY }}
-        className="absolute -bottom-25 md:-bottom-32 lg:-bottom-43 xl:-bottom-55 2xl:-bottom-70 left-1/2 -translate-x-1/2 pointer-events-none select-none max-md:hidden will-change-transform"
-      >
-        <div className="relative text-9xl tracking-[-0.95] font-helveticaMediumItalic scale-[1.35] md:scale-[2.35] lg:scale-[3.1] xl:scale-[4.5] 2xl:scale-[5.5] -ml-4 sm:-ml-10 md:-ml-12 lg:-ml-16 xl:-ml-28 whitespace-nowrap">
-          {/* Invisible HTML text to define exact width, height, and centering layout */}
-          <span className="opacity-0">NICK</span>
+      {isSm && (
+        <motion.div
+          style={{ y: watermarkY }}
+          className="absolute -bottom-25 md:-bottom-32 lg:-bottom-43 xl:-bottom-55 2xl:-bottom-70 left-1/2 -translate-x-1/2 pointer-events-none select-none max-md:hidden will-change-transform"
+        >
+          <div className="relative text-9xl tracking-[-0.95] font-helveticaMediumItalic scale-[1.35] md:scale-[2.35] lg:scale-[3.1] xl:scale-[4.5] 2xl:scale-[5.5] -ml-4 sm:-ml-10 md:-ml-12 lg:-ml-16 xl:-ml-28 whitespace-nowrap">
+            {/* Invisible HTML text to define exact width, height, and centering layout */}
+            <span className="opacity-0">NICK</span>
 
-          {/* SVG overlay that draws the actual text with a hardware-accelerated stroke */}
-          <svg className="absolute inset-0 w-full h-full overflow-visible" aria-hidden="true">
-            <motion.text
-              x="50%"
-              y="50%"
-              textAnchor="middle"
-              dominantBaseline="central"
-              fill="#ffffff"
-              stroke="#ffffff"
-              style={{ strokeWidth: strokeWidth, strokeLinejoin: 'round' }}
-              className="font-helveticaMediumItalic text-9xl tracking-[-0.95]"
-            >
-              NICK
-            </motion.text>
-          </svg>
-        </div>
-      </motion.div>
+            {/* SVG overlay that draws the actual text with a hardware-accelerated stroke */}
+            <svg className="absolute inset-0 w-full h-full overflow-visible" aria-hidden="true">
+              <motion.text
+                x="50%"
+                y="50%"
+                textAnchor="middle"
+                dominantBaseline="central"
+                fill="#ffffff"
+                stroke="#ffffff"
+                style={{ strokeWidth: strokeWidth, strokeLinejoin: 'round' }}
+                className="font-helveticaMediumItalic text-9xl tracking-[-0.95]"
+              >
+                NICK
+              </motion.text>
+            </svg>
+          </div>
+        </motion.div>
+      )}
     </section>
   );
 }

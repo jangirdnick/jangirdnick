@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     template: '%s | Jangir D Nick',
   },
   description:
-    'Full-stack engineer building web products, APIs, and cloud systems with React, Next.js, Node.js, Nest.js, AWS, and Docker — focused on performance, security, and reliable delivery.',
+    'Full-stack engineer building web products, APIs, and cloud systems with React, Next.js, Node.js, Nest.js, AWS, and Docker, kubernetes — focused on performance, security, and reliable delivery.',
   keywords: [
     'Jangir D Nick',
     'Nick Jangir',
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Jangir D Nick | Full-Stack & Cloud Engineer',
     description:
-      'Web design, development, and cloud engineering for growing businesses — performance, security, and production-ready systems.',
+      'Full-stack engineer building web products, APIs, and cloud systems with React, Next.js, Node.js, Nest.js, AWS, and Docker, kubernetes.',
     url: 'https://nickdev.space',
     siteName: 'Jangir D Nick',
     locale: 'en_US',

@@ -7,16 +7,25 @@ import JsonLd from '@/components/JsonLd';
 export const metadata: Metadata = {
   title: 'Jangir D Nick | Full-Stack & Cloud Engineer',
   description:
-    'Full-stack engineer building web products, APIs, and cloud systems with React, Next.js, Node.js, Nest.js, AWS, and Docker — focused on performance, security, and reliable delivery.',
+    'Full-stack engineer building web products, APIs, and cloud systems with React, Next.js, Node.js, Nest.js, AWS, and Docker, kubernetes — focused on performance, security, and reliable delivery.',
   alternates: {
     canonical: 'https://nickdev.space',
   },
   openGraph: {
     title: 'Jangir D Nick | Full-Stack & Cloud Engineer',
     description:
-      'Web design, development, and cloud engineering for growing businesses — performance, security, and production-ready systems.',
+      'Full-stack engineer building web products, APIs, and cloud systems with React, Next.js, Node.js, Nest.js, AWS, and Docker, kubernetes.',
     url: 'https://nickdev.space',
     type: 'website',
+    siteName: 'Jangir D Nick',
+    images: [
+      {
+        url: 'https://ik.imagekit.io/ey4pcsgfy/avatar/jangirdnick.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Jangir D Nick — Full-Stack & Cloud Engineer',
+      },
+    ],
   },
 };
 
@@ -34,6 +43,12 @@ const personSchema = {
       description:
         'Full-stack engineer building web products, APIs, and cloud systems with React, Next.js, Node.js, AWS, and Docker — focused on performance, security, and reliable delivery.',
       knowsAbout: [
+        'Jangir D Nick',
+        'Nick Jangir',
+        'Nandlal Jangid',
+        'Full-Stack Engineer',
+        'Cloud Engineer',
+        'DevOps Engineer',
         'Frontend Engineering',
         'React',
         'Next.js',

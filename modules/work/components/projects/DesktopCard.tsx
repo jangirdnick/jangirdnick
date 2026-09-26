@@ -48,8 +48,12 @@ export default function DesktopCard({ projectData }: { projectData: ProjectDataP
       if (!rect) return;
       const x = e.clientX - rect.left;
 
-      const maxX = Math.max(0, rect.width - CARD_W);
-      rawX.set(Math.min(Math.max(x - CARD_W / 2, 0), maxX));
+      // Keep safe margin so the card doesn't overlap the left/right text
+      const padding = 220;
+      const minX = padding;
+      const maxX = Math.max(minX, rect.width - CARD_W - padding);
+
+      rawX.set(Math.min(Math.max(x - CARD_W / 2, minX), maxX));
       rawY.set(rowCenterYRef.current);
 
       rotateYRaw.set((x / rect.width - 0.5) * 14);
