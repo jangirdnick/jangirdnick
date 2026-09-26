@@ -48,13 +48,26 @@ export const DesktopProjectRow = memo(function DesktopProjectRow({
           onMouseEnter={(e) => onMouseEnter(e, idx)}
           aria-label={`${project.title} — ${project.role}, ${project.year}`}
         >
-          <p className="text-sm xl:text-base text-foreground/60">{project.role}</p>
-          <h2 className="text-5xl xl:text-6xl 2xl:text-7xl font-helveticaRoman font-thin italic tracking-[-0.04em]">
+          <p className="text-sm xl:text-base text-foreground/60 w-32">{project.role}</p>
+          <h2 className="text-5xl xl:text-6xl 2xl:text-7xl font-helveticaRoman font-thin italic tracking-[-0.04em] flex-1 text-center">
             {project.title}
           </h2>
-          <time dateTime={project.year} className="text-sm xl:text-base text-foreground/60">
-            {project.year}
-          </time>
+          <div className="flex items-center justify-end gap-6 w-32">
+            {project.gitLink && (
+              <span
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open(project.gitLink, '_blank');
+                }}
+                className="text-sm xl:text-base text-foreground/60 hover:text-foreground transition-colors z-10 relative cursor-pointer"
+              >
+                Github ↗
+              </span>
+            )}
+            <time dateTime={project.year} className="text-sm xl:text-base text-foreground/60">
+              {project.year}
+            </time>
+          </div>
 
           <div className="absolute bottom-0 inset-x-0 -z-1 w-full h-0 bg-orange-600 group-hover:h-full ease-in-out duration-700" />
         </article>

@@ -81,20 +81,35 @@ export default function ProjectCard({ project, index, isAnimate = true }: Projec
               {project.role}
             </span>
 
-            {project.view ? (
-              <span
-                aria-label={`View ${project.title} live`}
-                className="text-background group-hover/card:text-background/70 transition-colors text-[3vw] md:text-[1.5vw] lg:text-sm relative inline-flex items-center group cursor-pointer"
-              >
-                <span className="relative inline-block font-thin py-0.5 before:absolute before:bottom-1 before:left-0 before:h-px before:w-full before:bg-background/80 before:content-[''] before:transition-transform before:duration-300 before:ease-out before:origin-right before:scale-x-0 hover/card:before:origin-left hover/card:before:scale-x-100 cursor-pointer">
-                  View →
+            <div className="flex items-center gap-3 lg:gap-5">
+              {project.gitLink && (
+                <span
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.open(project.gitLink, '_blank');
+                  }}
+                  className="text-background group-hover/card:text-background/70 transition-colors text-[3vw] md:text-[1.5vw] lg:text-sm relative inline-flex items-center group cursor-pointer z-10"
+                >
+                  <span className="relative inline-block font-thin py-0.5 before:absolute before:bottom-1 before:left-0 before:h-px before:w-full before:bg-background/80 before:content-[''] before:transition-transform before:duration-300 before:ease-out before:origin-right before:scale-x-0 hover/card:before:origin-left hover/card:before:scale-x-100 cursor-pointer">
+                    Github ↗
+                  </span>
                 </span>
-              </span>
-            ) : (
-              <span className="text-background/30 font-helveticaRoman text-[3vw] md:text-[1.5vw] lg:text-sm italic">
-                Coming soon
-              </span>
-            )}
+              )}
+              {project.view ? (
+                <span
+                  aria-label={`View ${project.title} live`}
+                  className="text-background group-hover/card:text-background/70 transition-colors text-[3vw] md:text-[1.5vw] lg:text-sm relative inline-flex items-center group cursor-pointer"
+                >
+                  <span className="relative inline-block font-thin py-0.5 before:absolute before:bottom-1 before:left-0 before:h-px before:w-full before:bg-background/80 before:content-[''] before:transition-transform before:duration-300 before:ease-out before:origin-right before:scale-x-0 hover/card:before:origin-left hover/card:before:scale-x-100 cursor-pointer">
+                    View ↗
+                  </span>
+                </span>
+              ) : (
+                <span className="text-background/30 font-helveticaRoman text-[3vw] md:text-[1.5vw] lg:text-sm italic">
+                  Coming soon
+                </span>
+              )}
+            </div>
           </div>
         </figcaption>
       </figure>

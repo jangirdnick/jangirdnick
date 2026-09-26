@@ -6,6 +6,7 @@ export interface ProjectDataProps {
   img: string;
   role: string;
   view: string;
+  gitLink: string;
 }
 
 export const projectData: ProjectDataProps[] = [
@@ -17,6 +18,7 @@ export const projectData: ProjectDataProps[] = [
     img: 'https://ik.imagekit.io/ey4pcsgfy/section/perpx.avif',
     role: 'Development',
     view: 'https://perpx.nickdev.space',
+    gitLink: 'https://github.com/jangirdnick/perpx',
   },
   {
     id: '02',
@@ -26,6 +28,7 @@ export const projectData: ProjectDataProps[] = [
     img: 'https://ik.imagekit.io/ey4pcsgfy/section/pixkit.avif',
     role: 'Development',
     view: 'https://pixkit.nickdev.space',
+    gitLink: 'https://github.com/jangirdnick/pixkit',
   },
   {
     id: '03',
@@ -35,6 +38,7 @@ export const projectData: ProjectDataProps[] = [
     img: 'https://ik.imagekit.io/ey4pcsgfy/section/aayeshol.avif',
     role: 'Development',
     view: 'https://aayeshol.nickdev.space',
+    gitLink: 'https://github.com/jangirdnick/aayeshol',
   },
   {
     id: '04',
@@ -44,5 +48,6 @@ export const projectData: ProjectDataProps[] = [
     img: 'https://ik.imagekit.io/ey4pcsgfy/section/nickdstudio.avif',
     role: 'Development',
     view: 'https://studio.nickdev.space',
+    gitLink: 'https://github.com/jangirdnick/nickdstudio',
   },
 ];
